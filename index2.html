@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lógica Matemática - Algorítmica Unidad I</title>
+    <style>
+        :root {
+            --color-primary: #1e3a8a;
+            --color-secondary: #3b82f6;
+            --color-white: #ffffff;
+            --color-gray-light: #f3f4f6;
+            --color-gray: #6b7280;
+            --color-text: #1f2937;
+            --color-accent: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 80px;
+            min-height: 600px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            color: var(--color-secondary);
+            font-size: 2rem;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            color: var(--color-gray);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .slide-content {
+            flex: 1;
+            color: var(--color-text);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .slide-content p {
+            margin-bottom: 20px;
+        }
+
+        .slide-content ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        .slide-content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .slide-content ol {
+            margin-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        .slide-content ol li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .teachers {
+            margin-top: 30px;
+        }
+
+        .teacher {
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .institution {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            color: var(--color-gray);
+        }
+
+        .year {
+            margin-top: 60px;
+            font-size: 2rem;
+            color: var(--color-secondary);
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            max-width: 500px;
+            border-collapse: collapse;
+            margin: 30px auto;
+            font-size: 1.1rem;
+        }
+
+        th, td {
+            border: 2px solid var(--color-primary);
+            padding: 12px 20px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        td {
+            background-color: var(--color-gray-light);
+        }
+
+        .example-box {
+            background-color: var(--color-gray-light);
+            border-left: 4px solid var(--color-secondary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: var(--color-gray-light);
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .nav-button {
+            background-color: var(--color-secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:disabled {
+            background-color: #d1d5db;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .cover-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .logic-symbol {
+            font-size: 1.3em;
+            color: var(--color-secondary);
+            font-weight: bold;
+        }
+
+        .highlight {
+            background-color: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+                min-height: 500px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .slide-content {
+                font-size: 1rem;
+            }
+
+            .navigation {
+                padding: 15px 20px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active cover-slide">
+            <div>
+                <h1>Lógica Matemática</h1>
+                <p class="subtitle">Algorítmica - Unidad I</p>
+                <div class="teachers">
+                    <div class="teacher"><strong>Ing. Richard Manuel Pereira Ovelar</strong></div>
+                    <div class="teacher"><strong>Lic. Aldo Ariel Gómez Ortega</strong></div>
+                </div>
+                <div class="institution">
+                    <p><strong>Facultad Politécnica</strong></p>
+                    <p>Universidad Nacional del Este</p>
+                    <p>Ciudad del Este, Paraguay</p>
+                </div>
+                <div class="year">2025</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Índice -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Índice de Contenidos</h2>
+            </div>
+            <div class="slide-content">
+                <ol>
+                    <li>¿Qué es un Algoritmo?</li>
+                    <li>Competencias Genéricas y Específicas</li>
+                    <li>Proposiciones y Valores Lógicos</li>
+                    <li>Proposiciones Simples y Compuestas</li>
+                    <li>Conectivos Lógicos</li>
+                    <li>Tablas de Verdad</li>
+                    <li>Conectivas: Negación, Conjunción, Disyunción</li>
+                    <li>Conectivas: Condicional y Bicondicional</li>
+                    <li>Tautología, Contradicción y Contingencia</li>
+                    <li>Ejercicios Propuestos</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 3: ¿Qué es un Algoritmo? -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>¿Qué es un Algoritmo?</h2>
+            </div>
+            <div class="slide-content">
+                <p>Un <strong>algoritmo</strong> es un conjunto ordenado y finito de operaciones que permite hallar la solución de un problema.</p>
+                <div class="example-box">
+                    <h3>Ejemplo: Sumar dos números</h3>
+                    <ol>
+                        <li><strong>Inicio</strong></li>
+                        <li>Leer el primer número (A)</li>
+                        <li>Leer el segundo número (B)</li>
+                        <li>Calcular la suma: C = A + B</li>
+                        <li>Mostrar el resultado C</li>
+                        <li><strong>Fin</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Competencias Genéricas -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Competencias Genéricas</h2>
+            </div>
+            <div class="slide-content">
+                <ul>
+                    <li>Capacidad <strong>creativa, innovadora y proactiva</strong></li>
+                    <li>Capacidad de <strong>abstracción, análisis, síntesis</strong> y sentido de la organización</li>
+                    <li>Capacidad de formular de manera creativa <strong>alternativas de solución</strong></li>
+                    <li>Capacidad de <strong>organizar y planificar</strong> el tiempo</li>
+                    <li>Capacidad de <strong>trabajo en equipo</strong></li>
+                    <li>Habilidades en el uso de las <strong>tecnologías de la información</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Competencias Específicas -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Competencias Específicas</h2>
+            </div>
+            <div class="slide-content">
+                <ul>
+                    <li><strong>Identificar</strong> proposiciones y sus valores de verdad</li>
+                    <li><strong>Construir y resolver</strong> tablas de verdad</li>
+                    <li><strong>Aplicar</strong> conectivos lógicos correctamente</li>
+                    <li><strong>Diferenciar</strong> proposiciones simples y compuestas</li>
+                    <li><strong>Resolver</strong> problemas de lógica proposicional</li>
+                    <li><strong>Fundamentar</strong> decisiones basadas en lógica matemática</li>
+                    <li><strong>Aplicar</strong> lógica en diseño de algoritmos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Proposiciones - Definición -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>¿Qué es una Proposición?</h2>
+            </div>
+            <div class="slide-content">
+                <p>Una <strong>proposición</strong> es una oración declarativa que puede ser <strong>verdadera (V)</strong> o <strong>falsa (F)</strong>, pero no ambas simultáneamente.</p>
+                <div class="example-box">
+                    <h3>Ejemplos:</h3>
+                    <ul>
+                        <li>"El cielo es azul" - <strong>Es una proposición</strong></li>
+                        <li>"5 + 3 = 8" - <strong>Es una proposición</strong></li>
+                        <li>"¿Qué hora es?" - <strong>NO es una proposición</strong> (es una pregunta)</li>
+                        <li>"¡Cierra la puerta!" - <strong>NO es una proposición</strong> (es una orden)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Ejemplos de Proposiciones -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Ejemplos de Proposiciones</h2>
+            </div>
+            <div class="slide-content">
+                <ul>
+                    <li>"Paraguay es un país de América del Sur" - <span class="highlight">Verdadero (V)</span></li>
+                    <li>"2 + 2 = 5" - <span class="highlight">Falso (F)</span></li>
+                    <li>"El agua hierve a 100°C" - <span class="highlight">Verdadero (V)</span></li>
+                    <li>"Todos los números pares son divisibles por 2" - <span class="highlight">Verdadero (V)</span></li>
+                    <li>"La Tierra es plana" - <span class="highlight">Falso (F)</span></li>
+                    <li>"10 es mayor que 15" - <span class="highlight">Falso (F)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Valores Lógicos -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Valores Lógicos</h2>
+            </div>
+            <div class="slide-content">
+                <p>Toda proposición tiene asociado un <strong>valor de verdad</strong>:</p>
+                <ul>
+                    <li><strong>Verdadero (V)</strong>: cuando la proposición es cierta</li>
+                    <li><strong>Falso (F)</strong>: cuando la proposición es incorrecta</li>
+                </ul>
+                <div class="example-box">
+                    <p><strong>Ejemplos con valores:</strong></p>
+                    <p>p: "La lógica es fundamental en programación" → <strong>V</strong></p>
+                    <p>q: "3 + 4 = 10" → <strong>F</strong></p>
+                    <p>r: "Un algoritmo tiene un número finito de pasos" → <strong>V</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Proposiciones Simples -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Proposiciones Simples</h2>
+            </div>
+            <div class="slide-content">
+                <p>Una <strong>proposición simple</strong> (o atómica) es aquella que <strong>no puede descomponerse</strong> en proposiciones más sencillas.</p>
+                <div class="example-box">
+                    <h3>Ejemplos:</h3>
+                    <ul>
+                        <li>p: "Hoy es martes"</li>
+                        <li>q: "Hace calor"</li>
+                        <li>r: "El número 7 es primo"</li>
+                        <li>s: "María estudia informática"</li>
+                    </ul>
+                </div>
+                <p>Cada una expresa <strong>una sola idea</strong> y no puede dividirse en partes más simples.</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: Proposiciones Compuestas -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Proposiciones Compuestas</h2>
+            </div>
+            <div class="slide-content">
+                <p>Una <strong>proposición compuesta</strong> (o molecular) es aquella formada por <strong>dos o más proposiciones simples</strong> unidas por conectivos lógicos.</p>
+                <div class="example-box">
+                    <h3>Ejemplos:</h3>
+                    <ul>
+                        <li>"Hoy es martes <strong>y</strong> hace calor"</li>
+                        <li>"El número 7 es primo <strong>o</strong> es par"</li>
+                        <li>"<strong>Si</strong> llueve, <strong>entonces</strong> me quedo en casa"</li>
+                        <li>"<strong>No</strong> hace frío"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Conectivos - Introducción -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectivos Lógicos</h2>
+            </div>
+            <div class="slide-content">
+                <p>Los <strong>conectivos lógicos</strong> son símbolos que permiten <strong>unir proposiciones simples</strong> para formar proposiciones compuestas.</p>
+                <p>Cada conectivo tiene un <strong>significado específico</strong> y determina el valor de verdad de la proposición resultante.</p>
+                <div class="example-box">
+                    <p><strong>Ejemplo:</strong></p>
+                    <p>p: "Estudio" | q: "Apruebo"</p>
+                    <p>p <span class="logic-symbol">∧</span> q: "Estudio <strong>y</strong> apruebo"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Conectivos - Lista Completa -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectivos Lógicos Principales</h2>
+            </div>
+            <div class="slide-content">
+                <table>
+                    <tr>
+                        <th>Conectivo</th>
+                        <th>Símbolo</th>
+                        <th>Nombre</th>
+                    </tr>
+                    <tr>
+                        <td>NO</td>
+                        <td><span class="logic-symbol">¬</span></td>
+                        <td>Negación</td>
+                    </tr>
+                    <tr>
+                        <td>Y</td>
+                        <td><span class="logic-symbol">∧</span></td>
+                        <td>Conjunción</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td><span class="logic-symbol">∨</span></td>
+                        <td>Disyunción</td>
+                    </tr>
+                    <tr>
+                        <td>SI... ENTONCES</td>
+                        <td><span class="logic-symbol">→</span></td>
+                        <td>Condicional</td>
+                    </tr>
+                    <tr>
+                        <td>SI Y SOLO SI</td>
+                        <td><span class="logic-symbol">↔</span></td>
+                        <td>Bicondicional</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 13: Ejemplos de NO Proposiciones -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Oraciones que NO son Proposiciones</h2>
+            </div>
+            <div class="slide-content">
+                <ol>
+                    <li>"¿Dónde vives?" - <strong>Pregunta</strong></li>
+                    <li>"¡Qué día tan hermoso!" - <strong>Exclamación</strong></li>
+                    <li>"Abre la ventana" - <strong>Orden o mandato</strong></li>
+                    <li>"Ojalá llueva mañana" - <strong>Deseo</strong></li>
+                    <li>"x + 5 = 10" - <strong>Expresión con variable</strong> (no es V o F hasta conocer x)</li>
+                    <li>"Esta oración es falsa" - <strong>Paradoja</strong></li>
+                    <li>"Por favor, ayúdame" - <strong>Petición</strong></li>
+                    <li>"El mayor número primo" - <strong>Frase sin verbo</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 14: ¿Cuáles son Proposiciones? -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Análisis: ¿Cuáles son Proposiciones?</h2>
+            </div>
+            <div class="slide-content">
+                <ol style="line-height: 2;">
+                    <li>"El deporte es saludable" → <strong>SÍ</strong> (proposición)</li>
+                    <li>"¿Qué hora es?" → <strong>NO</strong> (pregunta)</li>
+                    <li>"2 + 3 = 5" → <strong>SÍ</strong> (proposición verdadera)</li>
+                    <li>"¡Qué hermoso día!" → <strong>NO</strong> (exclamación)</li>
+                    <li>"El patio está mojado" → <strong>SÍ</strong> (proposición)</li>
+                    <li>"Cierra la puerta" → <strong>NO</strong> (orden)</li>
+                    <li>"x es mayor que 10" → <strong>NO</strong> (tiene variable indefinida)</li>
+                    <li>"La lógica es importante" → <strong>SÍ</strong> (proposición)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 15: Tablas de Verdad - Introducción -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Tablas de Verdad</h2>
+            </div>
+            <div class="slide-content">
+                <p>Una <strong>tabla de verdad</strong> es una representación que muestra <strong>todos los valores posibles</strong> de una proposición compuesta según los valores de sus proposiciones simples.</p>
+                <p>Las tablas de verdad fueron desarrolladas por el filósofo y matemático <strong>Ludwig Wittgenstein</strong> y son fundamentales para:</p>
+                <ul>
+                    <li>Analizar la validez de argumentos lógicos</li>
+                    <li>Diseñar circuitos digitales</li>
+                    <li>Programar estructuras de control</li>
+                    <li>Verificar equivalencias lógicas</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 16: Método para Construir Tablas - Paso 1 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Construir Tablas de Verdad - Paso 1</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Determinar columnas y renglones</h3>
+                <p><strong>Fórmula:</strong> Número de renglones = <strong>2<sup>n</sup></strong></p>
+                <p>Donde <strong>n</strong> es el número de proposiciones simples diferentes.</p>
+                <div class="example-box">
+                    <p><strong>Ejemplos:</strong></p>
+                    <ul>
+                        <li>1 proposición (p): 2<sup>1</sup> = <strong>2 renglones</strong></li>
+                        <li>2 proposiciones (p, q): 2<sup>2</sup> = <strong>4 renglones</strong></li>
+                        <li>3 proposiciones (p, q, r): 2<sup>3</sup> = <strong>8 renglones</strong></li>
+                        <li>4 proposiciones: 2<sup>4</sup> = <strong>16 renglones</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Método para Construir Tablas - Paso 2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Construir Tablas de Verdad - Paso 2</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Llenar los valores de V y F</h3>
+                <p><strong>Regla:</strong> Para cada proposición simple:</p>
+                <ul>
+                    <li>Primera columna: alternar cada 2<sup>n-1</sup> valores</li>
+                    <li>Segunda columna: alternar cada 2<sup>n-2</sup> valores</li>
+                    <li>Y así sucesivamente...</li>
+                </ul>
+                <div class="example-box">
+                    <p><strong>Para 2 proposiciones (p, q):</strong></p>
+                    <p>Columna p: V, V, F, F (alterna cada 2)</p>
+                    <p>Columna q: V, F, V, F (alterna cada 1)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Conectiva Negación -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectiva: Negación <span class="logic-symbol">(¬)</span></h2>
+            </div>
+            <div class="slide-content">
+                <p>La <strong>negación</strong> invierte el valor de verdad de una proposición.</p>
+                <p><strong>Símbolo:</strong> ¬p (se lee "no p")</p>
+                <table>
+                    <tr>
+                        <th>p</th>
+                        <th>¬p</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                </table>
+                <div class="example-box">
+                    <p><strong>Ejemplo:</strong></p>
+                    <p>p: "Hace calor" → V</p>
+                    <p>¬p: "No hace calor" → F</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Conectiva Conjunción -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectiva: Conjunción <span class="logic-symbol">(∧)</span></h2>
+            </div>
+            <div class="slide-content">
+                <p>La <strong>conjunción</strong> es verdadera solo cuando <strong>ambas proposiciones son verdaderas</strong>.</p>
+                <p><strong>Símbolo:</strong> p ∧ q (se lee "p y q")</p>
+                <table>
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>p ∧ q</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                </table>
+                <div class="example-box">
+                    <p>p: "El deporte es saludable" | q: "El deporte es disciplina"</p>
+                    <p>p ∧ q: "El deporte es saludable <strong>y</strong> disciplina"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Conectiva Disyunción -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectiva: Disyunción Inclusiva <span class="logic-symbol">(∨)</span></h2>
+            </div>
+            <div class="slide-content">
+                <p>La <strong>disyunción</strong> es verdadera cuando <strong>al menos una proposición es verdadera</strong>.</p>
+                <p><strong>Símbolo:</strong> p ∨ q (se lee "p o q")</p>
+                <table>
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>p ∨ q</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                </table>
+                <div class="example-box">
+                    <p><strong>Ejemplo:</strong></p>
+                    <p>p: "Estudio matemáticas" | q: "Estudio programación"</p>
+                    <p>p ∨ q: "Estudio matemáticas <strong>o</strong> programación"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Conectiva Condicional -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectiva: Condicional <span class="logic-symbol">(→)</span></h2>
+            </div>
+            <div class="slide-content">
+                <p>El <strong>condicional</strong> es falso solo cuando el <strong>antecedente es verdadero</strong> y el <strong>consecuente es falso</strong>.</p>
+                <p><strong>Símbolo:</strong> p → q (se lee "si p, entonces q")</p>
+                <table>
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>p → q</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                </table>
+                <div class="example-box">
+                    <p>p: "Llueve" | q: "El patio está mojado"</p>
+                    <p>p → q: "<strong>Si</strong> llueve, <strong>entonces</strong> el patio está mojado"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Conectiva Bicondicional -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conectiva: Bicondicional <span class="logic-symbol">(↔)</span></h2>
+            </div>
+            <div class="slide-content">
+                <p>El <strong>bicondicional</strong> es verdadero cuando <strong>ambas proposiciones tienen el mismo valor de verdad</strong>.</p>
+                <p><strong>Símbolo:</strong> p ↔ q (se lee "p si y solo si q")</p>
+                <table>
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>p ↔ q</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                </table>
+                <div class="example-box">
+                    <p><strong>Ejemplo:</strong></p>
+                    <p>p: "Es fin de semana" | q: "No hay clases"</p>
+                    <p>p ↔ q: "Es fin de semana <strong>si y solo si</strong> no hay clases"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Ejemplo 1 de Tabla de Verdad -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Resolviendo Tablas de Verdad - Ejemplo 1</h2>
+            </div>
+            <div class="slide-content">
+                <p><strong>Proposición:</strong> (p ∧ q) → r</p>
+                <table style="max-width: 600px;">
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>r</th>
+                        <th>p ∧ q</th>
+                        <th>(p ∧ q) → r</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 24: Ejemplo 2 de Tabla de Verdad -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Resolviendo Tablas de Verdad - Ejemplo 2</h2>
+            </div>
+            <div class="slide-content">
+                <p><strong>Proposición:</strong> [p ∧ (q → r)] ∨ p</p>
+                <p style="font-size: 0.95rem;"><strong>Pasos:</strong></p>
+                <ol style="font-size: 0.95rem;">
+                    <li>Evaluar (q → r)</li>
+                    <li>Evaluar p ∧ (q → r)</li>
+                    <li>Evaluar [p ∧ (q → r)] ∨ p</li>
+                </ol>
+                <table style="max-width: 700px; font-size: 0.9rem;">
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>r</th>
+                        <th>q → r</th>
+                        <th>p ∧ (q → r)</th>
+                        <th>[p ∧ (q → r)] ∨ p</th>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>F</td>
+                        <td>V</td>
+                        <td>F</td>
+                        <td>F</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 25: Tautología, Contradicción y Contingencia -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Tautología, Contradicción y Contingencia</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Definiciones:</h3>
+                <ul style="margin-bottom: 30px;">
+                    <li><strong>Tautología:</strong> Proposición compuesta que es <span class="highlight">siempre verdadera</span>, independientemente de los valores de verdad de sus componentes.
+                        <br><em>Ejemplo: p ∨ ¬p</em></li>
+                    <li><strong>Contradicción:</strong> Proposición compuesta que es <span class="highlight">siempre falsa</span>, independientemente de los valores de verdad de sus componentes.
+                        <br><em>Ejemplo: p ∧ ¬p</em></li>
+                    <li><strong>Contingencia:</strong> Proposición compuesta que puede ser <span class="highlight">verdadera o falsa</span> según los valores de sus componentes.
+                        <br><em>Ejemplo: p ∧ q</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 26: Ejercicios Propuestos -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Ejercicios Propuestos</h2>
+            </div>
+            <div class="slide-content" style="font-size: 1rem;">
+                <p><strong>Ejercicio 1:</strong> Dadas las proposiciones: p = Marcos es comerciante, q = Marcos es un próspero industrial y r = Marcos es ingeniero. Simbolizar el enunciado: "Si no es el caso que Marcos sea un comerciante y próspero industrial, entonces es ingeniero o no es comerciante".</p>
+                <hr style="margin: 20px 0; border: 1px solid #e5e7eb;">
+                <p><strong>Ejercicio 2:</strong> Dadas las proposiciones q: "4 es un número impar", p y r cualesquiera tal que -[(r∨q) → (r∧p)] es verdadera; hallar el valor de verdad de: A = r→(~p∨~q); B = [r↔(p∧q)]→(q∧~p); C = (r∨~p) ∧ (q∨p)</p>
+            </div>
+        </div>
+
+        <!-- Slide 27: Referencias Bibliográficas -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Referencias Bibliográficas</h2>
+            </div>
+            <div class="slide-content">
+                <h3>Bibliografía Básica:</h3>
+                <ul style="font-size: 1rem;">
+                    <li>ALMEIDA RODRIGUEZ, M. Angel. <em>Metodología de la Programación a través del Pseudocódigo</em></li>
+                    <li>JOYANES AGUILAR, Luis. <em>Fundamentos de Programación, Algoritmos y Estructura de Datos</em></li>
+                    <li>PABLO SZNAJDLEDER. <em>Algoritmos a Fondo: Con implementaciones en C y Java</em></li>
+                </ul>
+                <h3 style="margin-top: 30px;">Bibliografía Complementaria:</h3>
+                <ul style="font-size: 1rem;">
+                    <li>ALCALDE, Eduardo y GARCÍA, Miguel. <em>Metodología de la Programación</em></li>
+                    <li>BRITIZ CHAMORRO, Victor Alfredo. <em>Libro de Ejercicios de Pseudocódigo</em></li>
+                    <li>FILHO, Edgar de Alencar. <em>Iniciación a la Lógica Matemática</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 28: Cierre -->
+        <div class="slide cover-slide">
+            <div>
+                <h1>¡Gracias por su atención!</h1>
+                <p class="subtitle" style="margin-top: 30px;">Lógica Matemática - Algorítmica Unidad I</p>
+                <div class="institution" style="margin-top: 50px;">
+                    <p><strong>Facultad Politécnica</strong></p>
+                    <p>Universidad Nacional del Este</p>
+                </div>
+                <div class="teachers" style="margin-top: 40px; font-size: 1rem;">
+                    <p>Ing. Richard Manuel Pereira Ovelar</p>
+                    <p>Lic. Aldo Ariel Gómez Ortega</p>
+                </div>
+                <p style="margin-top: 40px; color: var(--color-secondary); font-size: 1.5rem; font-weight: bold;">2025</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">28</span>
+            </div>
+            <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Initialize
+        totalSlidesSpan.textContent = totalSlides;
+        updateSlideDisplay();
+
+        function changeSlide(direction) {
+            // Remove active class from current slide
+            slides[currentSlideIndex].classList.remove('active');
+            
+            // Update index
+            currentSlideIndex += direction;
+            
+            // Ensure index stays within bounds
+            if (currentSlideIndex < 0) currentSlideIndex = 0;
+            if (currentSlideIndex >= totalSlides) currentSlideIndex = totalSlides - 1;
+            
+            // Add active class to new slide
+            slides[currentSlideIndex].classList.add('active');
+            
+            // Update display
+            updateSlideDisplay();
+        }
+
+        function updateSlideDisplay() {
+            currentSlideSpan.textContent = currentSlideIndex + 1;
+            
+            // Update button states
+            prevBtn.disabled = currentSlideIndex === 0;
+            nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                if (currentSlideIndex > 0) changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                if (currentSlideIndex < totalSlides - 1) changeSlide(1);
+            }
+        });
+
+        // Optional: Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - next slide
+                if (currentSlideIndex < totalSlides - 1) changeSlide(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right - previous slide
+                if (currentSlideIndex > 0) changeSlide(-1);
+            }
+        }
+    </script>
+</body>
+</html>
