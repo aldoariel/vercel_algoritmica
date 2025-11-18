@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unidad 2 - Lógica del Algoritmo | Algorítmica</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8fafc;
+      color: #222d3d;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e3a8a;
+      padding: 1rem 2rem;
+      color: white;
+      text-align: center;
+    }
+    h1, h2, h3 {
+      color: #1e3a8a;
+    }
+    main {
+      max-width: 900px;
+      margin: 1rem auto 3rem auto;
+      padding: 1rem 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(30, 58, 138, 0.1);
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    ul.material-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul.material-list li {
+      padding: 0.6rem;
+      border-left: 5px solid #10b981;
+      margin-bottom: 0.5rem;
+      background-color: #ecfdf5;
+      font-size: 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .exercise {
+      background-color: #d0f0fd;
+      padding: 1rem 1.5rem;
+      border-left: 5px solid #1e3a8a;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    .exercise h3 {
+      margin-top: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #1e3a8a;
+      padding: 0.5rem 1rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e6eefc;
+    }
+    .download-links a {
+      display: inline-block;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.6rem 1rem;
+      text-decoration: none;
+      margin-right: 1rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unidad 2 - Lógica del Algoritmo</h1>
+    <p><strong>Algorítmica - Proceso de Admisión 2025</strong> | Facultad Politécnica - UNE</p>
+  </header>
+  <main>
+    <section>
+      <h2>Presentación de la Unidad</h2>
+      <p>En esta unidad se aborda el concepto de algoritmo, sus tipos y representaciones mediante diagramas de flujo y pseudocódigo, además de los tipos de datos y operadores fundamentales para el desarrollo de algoritmos efectivos.</p>
+    </section>
+
+    <section>
+      <h2>Capacidades y Competencias a Desarrollar</h2>
+      <ul class="material-list">
+        <li>Analizar y comprender los conceptos fundamentales de algoritmos y su estructura.</li>
+        <li>Diferenciar los tipos de algoritmos y sus propiedades distintivas.</li>
+        <li>Diseñar y representar algoritmos mediante diagramas de flujo y pseudocódigo.</li>
+        <li>Conocer y aplicar los diferentes tipos de datos en la resolución de problemas.</li>
+        <li>Utilizar operadores aritméticos, relacionales y lógicos para manipular datos.</li>
+        <li>Desarrollar habilidades para la resolución de problemas a través de la lógica algorítmica.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contenidos</h2>
+      <ol>
+        <li><strong>Conceptos fundamentales:</strong> definición y características de algoritmos.</li>
+        <li><strong>Tipos de algoritmos:</strong> secuenciales, condicionales, repetitivos y más.</li>
+        <li><strong>Lenguajes algorítmicos:</strong> definición y tipologías.</li>
+        <li><strong>Diagramas de flujo:</strong> símbolos, diseño e interpretación.</li>
+        <li><strong>Pseudocódigo:</strong> estructura, ventajas y desarrollo.</li>
+        <li><strong>Tipos de datos:</strong> numéricos, lógicos, caracteres y cadenas de texto.</li>
+        <li><strong>Operadores:</strong> aritméticos, relacionales y lógicos.</li>
+        <li><strong>Prioridad de operadores y expresiones:</strong> reglas y ejemplos.</li>
+        <li><strong>Identificadores, variables y constantes:</strong> definición y buenas prácticas.</li>
+        <li><strong>Resolución de ejercicios prácticos:</strong> elaboración y análisis.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Material Didáctico</h2>
+      <div class="download-links">
+        <a href="#" download>Presentación Unidad 2 (PDF)</a>
+        <a href="#" download>Guía de Ejercicios</a>
+        <a href="#" download>Tarea de la Unidad 2</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Videos Explicativos</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Actividades y Ejercicios</h2>
+
+      <div class="exercise">
+        <h3>Ejercicio 1: Analizar proposiciones</h3>
+        <p>Sean p, q y r las siguientes proposiciones:</p>
+        <ul>
+          <li>p: Has obtenido un sobresaliente en el examen final.</li>
+          <li>q: Has hecho todos los ejercicios de este libro.</li>
+          <li>r: Has obtenido un sobresaliente en esta asignatura.</li>
+        </ul>
+        <p>Escribe las siguientes proposiciones utilizando p, q y r y los conectivos lógicos:</p>
+        <ol>
+          <li>Has obtenido un sobresaliente en esta asignatura, pero no has hecho todos los ejercicios de este libro.</li>
+          <li>Has hecho todos los ejercicios de este libro y has obtenido un sobresaliente tanto en la asignatura como en el examen final.</li>
+          <li>Conseguir un sobresaliente en el examen final y realizar todos los ejercicios es suficiente para obtener un sobresaliente en esta asignatura.</li>
+          <li>Puedes conseguir un sobresaliente en esta asignatura si y solo si haces todos los ejercicios o tu calificación en el examen final es sobresaliente.</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <h3>Ejercicio 2: Expresar proposiciones</h3>
+        <p>Sean p y q las proposiciones:</p>
+        <ul>
+          <li>p: Hace frío.</li>
+          <li>q: Llueve.</li>
+        </ul>
+        <p>Escribe en lenguaje natural las siguientes expresiones simbólicas:</p>
+        <ol>
+          <li>¬p</li>
+          <li>p ∧ q</li>
+          <li>p ∨ q</li>
+          <li>q ∨ ¬p</li>
+          <li>¬p ∧ ¬q</li>
+          <li>¬¬q</li>
+          <li>p → q</li>
+          <li>¬p → ¬q</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <h3>Ejercicio 3: Formalización simbólica avanzada</h3>
+        <p>Para el universo de enteros, sean p, q, r, s y t las proposiciones:</p>
+        <ul>
+          <li>p: x > 0</li>
+          <li>q: x es par</li>
+          <li>r: x es un cuadrado perfecto</li>
+          <li>s: x es divisible por 4</li>
+          <li>t: x es divisible por 5</li>
+        </ul>
+        <p>Escribe simbólicamente:</p>
+        <ol>
+          <li>Si x es par, entonces x no es divisible por 5.</li>
+          <li>Si x es par y un cuadrado perfecto, entonces x es divisible por 4.</li>
+          <li>x > 0 si y solo si x es divisible por 5, pero no es divisible por 5.</li>
+          <li>No es verdad que x es un cuadrado perfecto o x es par.</li>
+          <li>No es verdad que si x es divisible por 4 y no es par, entonces x es divisible por 5 o no es un cuadrado perfecto.</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <h3>Ejercicio 4: Diagramas de flujo y pseudocódigos</h3>
+        <p>Diseña el diagrama de flujo y el pseudocódigo para cada uno de los siguientes algoritmos:</p>
+        <ol>
+          <li>Calcular el área de un triángulo dadas la base y la altura.</li>
+          <li>Determinar si un número es par o impar.</li>
+          <li>Generar la serie de Fibonacci hasta un número n dado.</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <h3>Ejercicio 5: Tipos de datos y operadores</h3>
+        <p>Resuelve los siguientes ejercicios sobre tipos de datos y operadores:</p>
+        <ol>
+          <li>Define variables numéricas, lógicas y de texto, e imprime sus valores.</li>
+          <li>Realiza operaciones aritméticas básicas.</li>
+          <li>Escribe expresiones utilizando operadores relacionales y lógicos.</li>
+          <li>Determina la prioridad de operadores en expresiones compuestas.</li>
+          <li>Ejemplifica el uso de asignación múltiple y operaciones con cadenas de texto.</li>
+        </ol>
+      </div>
+
+    </section>
+
+    <footer>
+      &copy; 2025 Facultad Politécnica - Universidad Nacional del Este | Algorítmica - Unidad 2
+    </footer>
+  </main>
+</body>
+</html>
