@@ -1,229 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unidad 2 - Lógica del Algoritmo | Algorítmica</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad II - Lógica del Algoritmo | Algorítmica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
+    :root {
+      --azul: #1e3a8a;
+      --azul-claro: #e0e7ff;
+      --verde: #10b981;
+      --gris-fondo: #f8fafc;
+      --sombracard: 0 4px 16px rgba(30,58,138,.07);
+      --borde: #c7d2fe;
+    }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f8fafc;
-      color: #222d3d;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--gris-fondo);
       margin: 0;
-      padding: 0;
+      color: #262a36;
     }
     header {
-      background-color: #1e3a8a;
-      padding: 1rem 2rem;
+      background: var(--azul);
       color: white;
+      padding: 1.5rem 0 1rem 0;
       text-align: center;
     }
-    h1, h2, h3 {
-      color: #1e3a8a;
+    header i {
+      font-size: 2.1em;
+      color: var(--verde);
     }
-    main {
-      max-width: 900px;
-      margin: 1rem auto 3rem auto;
-      padding: 1rem 2rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(30, 58, 138, 0.1);
+    h1 {
+      margin-top: 0.3em;
+      margin-bottom: 0.2em;
+      letter-spacing: 1px;
     }
     section {
-      margin-bottom: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 1em;
+      box-shadow: var(--sombracard);
+      padding: 2rem 2rem 1.5rem 2rem;
+      animation: fadein 1.2s both;
     }
-    ul.material-list {
-      list-style: none;
-      padding-left: 0;
+    @keyframes fadein { from { opacity:0; transform: translateY(35px); } to { opacity:1; transform: none; } }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+      justify-content: center;
     }
-    ul.material-list li {
-      padding: 0.6rem;
-      border-left: 5px solid #10b981;
-      margin-bottom: 0.5rem;
-      background-color: #ecfdf5;
-      font-size: 1rem;
-      border-radius: 0 4px 4px 0;
+    .card {
+      background: var(--azul-claro);
+      border: 1.5px solid var(--borde);
+      border-radius: 1em;
+      box-shadow: 0 2px 8px rgba(30,58,138,0.07);
+      flex: 1 1 245px;
+      max-width: 270px;
+      padding: 1.2em 1em 1.1em 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform .22s;
+      cursor: pointer;
     }
-    .exercise {
-      background-color: #d0f0fd;
-      padding: 1rem 1.5rem;
-      border-left: 5px solid #1e3a8a;
-      margin: 1rem 0;
-      border-radius: 4px;
+    .card:hover {
+      transform: translateY(-5px) scale(1.036);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.07);
     }
-    .exercise h3 {
-      margin-top: 0;
+    .card i {
+      font-size: 2em;
+      color: var(--azul);
+      margin-bottom: .3em;
+    }
+    .card span {
+      font-weight: bold;
+      color: var(--azul);
+      font-size: 1.08em;
+      margin-bottom: .28em;
+      text-align: center;
+    }
+    .card p {
+      margin: 0.1em 0 0 0;
+      text-align: center;
+      font-size: .99em;
+    }
+    ul.bullet-green li {
+      margin-bottom: .6em;
+      padding-left: 1.1em;
+      position: relative;
+    }
+    ul.bullet-green li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .40em;
+      width: .62em; 
+      height: .62em;
+      background: var(--verde);
+      border-radius: 50%;
+      opacity: .7;
+    }
+    .tips {
+      background: #e0fff4;
+      border-left: 8px solid var(--verde);
+      margin: 2em 0 2em 0;
+      padding: 1em 1.2em;
+      border-radius: .7em;
+      font-size: 1.05em;
+      color: #14532d;
     }
     table {
+      width: 97%;
       border-collapse: collapse;
-      width: 100%;
-      margin-top: 1rem;
+      margin: 1.3em 0;
+      font-size: 1em;
     }
     th, td {
-      border: 1px solid #1e3a8a;
-      padding: 0.5rem 1rem;
+      border: 1.5px solid #b6c7eb;
+      padding: .55em 1em;
       text-align: left;
     }
     th {
-      background-color: #e6eefc;
+      background: var(--azul-claro);
+      color: #1e3a8a;
     }
-    .download-links a {
-      display: inline-block;
-      background-color: #1e3a8a;
-      color: white;
-      padding: 0.6rem 1rem;
-      text-decoration: none;
-      margin-right: 1rem;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.95rem;
+    .ejemplo {
+      background: #e0e7ff;
+      font-style: italic;
+      border-left: 7px solid var(--azul);
+      margin: 1.4em 0 .9em 0;
+      padding: .6em 1.1em;
+      border-radius: .55em;
+    }
+    .actividad {
+      background: #fef9c3;
+      border-left: 7px solid #facc15;
+      font-size: 1.04em;
+      color: #92400e;
+      margin: 1.1em 0 1.8em 0;
+      padding: .6em 1.1em;
+      border-radius: .55em;
+    }
+    @media (max-width: 620px) {
+      section { padding: 1.2em .4em; border-radius: .6em; }
+      .cards { flex-direction: column; gap: .8em; }
+      .card { max-width: none; }
+      th, td { font-size: .98em; padding: .4em .5em}
     }
     footer {
-      text-align: center;
-      padding: 1rem 0;
-      font-size: 0.9rem;
-      color: #555;
-      border-top: 1px solid #eee;
-      margin-top: 2rem;
+      text-align:center;
+      color: #1e3a8a;
+      font-size: .98em;
+      margin: 2.2em 0 1.5em 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Unidad 2 - Lógica del Algoritmo</h1>
-    <p><strong>Algorítmica - Proceso de Admisión 2025</strong> | Facultad Politécnica - UNE</p>
+    <i class="fas fa-brain"></i>
+    <h1>Unidad II: Lógica del Algoritmo</h1>
+    <div>Facultad Politécnica - UNE <span style="font-size:.98em;">| Admisión 2025</span></div>
   </header>
-  <main>
-    <section>
-      <h2>Presentación de la Unidad</h2>
-      <p>En esta unidad se aborda el concepto de algoritmo, sus tipos y representaciones mediante diagramas de flujo y pseudocódigo, además de los tipos de datos y operadores fundamentales para el desarrollo de algoritmos efectivos.</p>
-    </section>
-
-    <section>
-      <h2>Capacidades y Competencias a Desarrollar</h2>
-      <ul class="material-list">
-        <li>Analizar y comprender los conceptos fundamentales de algoritmos y su estructura.</li>
-        <li>Diferenciar los tipos de algoritmos y sus propiedades distintivas.</li>
-        <li>Diseñar y representar algoritmos mediante diagramas de flujo y pseudocódigo.</li>
-        <li>Conocer y aplicar los diferentes tipos de datos en la resolución de problemas.</li>
-        <li>Utilizar operadores aritméticos, relacionales y lógicos para manipular datos.</li>
-        <li>Desarrollar habilidades para la resolución de problemas a través de la lógica algorítmica.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Contenidos</h2>
-      <ol>
-        <li><strong>Conceptos fundamentales:</strong> definición y características de algoritmos.</li>
-        <li><strong>Tipos de algoritmos:</strong> secuenciales, condicionales, repetitivos y más.</li>
-        <li><strong>Lenguajes algorítmicos:</strong> definición y tipologías.</li>
-        <li><strong>Diagramas de flujo:</strong> símbolos, diseño e interpretación.</li>
-        <li><strong>Pseudocódigo:</strong> estructura, ventajas y desarrollo.</li>
-        <li><strong>Tipos de datos:</strong> numéricos, lógicos, caracteres y cadenas de texto.</li>
-        <li><strong>Operadores:</strong> aritméticos, relacionales y lógicos.</li>
-        <li><strong>Prioridad de operadores y expresiones:</strong> reglas y ejemplos.</li>
-        <li><strong>Identificadores, variables y constantes:</strong> definición y buenas prácticas.</li>
-        <li><strong>Resolución de ejercicios prácticos:</strong> elaboración y análisis.</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Material Didáctico</h2>
-      <div class="download-links">
-        <a href="#" download>Presentación Unidad 2 (PDF)</a>
-        <a href="#" download>Guía de Ejercicios</a>
-        <a href="#" download>Tarea de la Unidad 2</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Videos Explicativos</a>
+  <section>
+    <h2>Visión General</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-database"></i>
+        <span>Datos &amp; Información</span>
+        <p>Comprende cómo se representan, procesan y organizan los datos en algoritmos.</p>
       </div>
-    </section>
-
-    <section>
-      <h2>Actividades y Ejercicios</h2>
-
-      <div class="exercise">
-        <h3>Ejercicio 1: Analizar proposiciones</h3>
-        <p>Sean p, q y r las siguientes proposiciones:</p>
-        <ul>
-          <li>p: Has obtenido un sobresaliente en el examen final.</li>
-          <li>q: Has hecho todos los ejercicios de este libro.</li>
-          <li>r: Has obtenido un sobresaliente en esta asignatura.</li>
-        </ul>
-        <p>Escribe las siguientes proposiciones utilizando p, q y r y los conectivos lógicos:</p>
-        <ol>
-          <li>Has obtenido un sobresaliente en esta asignatura, pero no has hecho todos los ejercicios de este libro.</li>
-          <li>Has hecho todos los ejercicios de este libro y has obtenido un sobresaliente tanto en la asignatura como en el examen final.</li>
-          <li>Conseguir un sobresaliente en el examen final y realizar todos los ejercicios es suficiente para obtener un sobresaliente en esta asignatura.</li>
-          <li>Puedes conseguir un sobresaliente en esta asignatura si y solo si haces todos los ejercicios o tu calificación en el examen final es sobresaliente.</li>
-        </ol>
+      <div class="card">
+        <i class="fa-solid fa-code"></i>
+        <span>Algoritmo</span>
+        <p>Conjunto de pasos lógicos y precisos para solucionar problemas.</p>
       </div>
-
-      <div class="exercise">
-        <h3>Ejercicio 2: Expresar proposiciones</h3>
-        <p>Sean p y q las proposiciones:</p>
-        <ul>
-          <li>p: Hace frío.</li>
-          <li>q: Llueve.</li>
-        </ul>
-        <p>Escribe en lenguaje natural las siguientes expresiones simbólicas:</p>
-        <ol>
-          <li>¬p</li>
-          <li>p ∧ q</li>
-          <li>p ∨ q</li>
-          <li>q ∨ ¬p</li>
-          <li>¬p ∧ ¬q</li>
-          <li>¬¬q</li>
-          <li>p → q</li>
-          <li>¬p → ¬q</li>
-        </ol>
+      <div class="card">
+        <i class="fas fa-flowchart"></i>
+        <span>Diagramas de Flujo</span>
+        <p>Representación gráfica de la secuencia lógica de un proceso.</p>
       </div>
-
-      <div class="exercise">
-        <h3>Ejercicio 3: Formalización simbólica avanzada</h3>
-        <p>Para el universo de enteros, sean p, q, r, s y t las proposiciones:</p>
-        <ul>
-          <li>p: x > 0</li>
-          <li>q: x es par</li>
-          <li>r: x es un cuadrado perfecto</li>
-          <li>s: x es divisible por 4</li>
-          <li>t: x es divisible por 5</li>
-        </ul>
-        <p>Escribe simbólicamente:</p>
-        <ol>
-          <li>Si x es par, entonces x no es divisible por 5.</li>
-          <li>Si x es par y un cuadrado perfecto, entonces x es divisible por 4.</li>
-          <li>x > 0 si y solo si x es divisible por 5, pero no es divisible por 5.</li>
-          <li>No es verdad que x es un cuadrado perfecto o x es par.</li>
-          <li>No es verdad que si x es divisible por 4 y no es par, entonces x es divisible por 5 o no es un cuadrado perfecto.</li>
-        </ol>
+      <div class="card">
+        <i class="fa-solid fa-keyboard"></i>
+        <span>Pseudocódigo</span>
+        <p>Descripción ordenada y clara de pasos, acercando el algoritmo a la programación.</p>
       </div>
-
-      <div class="exercise">
-        <h3>Ejercicio 4: Diagramas de flujo y pseudocódigos</h3>
-        <p>Diseña el diagrama de flujo y el pseudocódigo para cada uno de los siguientes algoritmos:</p>
-        <ol>
-          <li>Calcular el área de un triángulo dadas la base y la altura.</li>
-          <li>Determinar si un número es par o impar.</li>
-          <li>Generar la serie de Fibonacci hasta un número n dado.</li>
-        </ol>
+      <div class="card">
+        <i class="fa-regular fa-circle-check"></i>
+        <span>Estructuras Algorítmicas</span>
+        <p>Secuenciales, selectivas y repetitivas. Su uso y diferencia práctica.</p>
       </div>
+    </div>
+    <div class="tips">
+      <strong>Tip:</strong> Los algoritmos están presentes en todo lo que haces, desde cocinar una receta hasta resolver problemas complejos en informática.
+    </div>
+  </section>
+  <section>
+    <h2>Conceptos Clave de la Unidad</h2>
+    <ul class="bullet-green">
+      <li><strong>Dato</strong>: Expresión que representa objetos. Ejemplo: "5", "A", "#".</li>
+      <li><strong>Información</strong>: Conjunto de datos con sentido, organizados y procesados.</li>
+      <li><strong>Lenguaje</strong>: Sistema de símbolos para comunicar o transmitir información.</li>
+      <li><strong>Jerarquía de los datos</strong>: Caracter &rarr; Campo &rarr; Registro &rarr; Archivo &rarr; Base de Datos.</li>
+      <li><strong>Algoritmo</strong>: Serie finita de pasos definidos y ordenados para llegar a una solución.</li>
+      <li><strong>Estructura básica</strong>: Entrada &rarr; Proceso &rarr; Salida.</li>
+      <li><strong>Tipos de datos</strong>: Numéricos, reales, lógicos (booleanos), caracteres, cadenas.</li>
+    </ul>
+    <div class="tips">
+      <b><i class="fas fa-lightbulb"></i> ¿Sabías?</b> Un diagrama de flujo ayuda a visualizar el plan antes de programar y detecta errores lógicos rápidamente.
+    </div>
+  </section>
 
-      <div class="exercise">
-        <h3>Ejercicio 5: Tipos de datos y operadores</h3>
-        <p>Resuelve los siguientes ejercicios sobre tipos de datos y operadores:</p>
-        <ol>
-          <li>Define variables numéricas, lógicas y de texto, e imprime sus valores.</li>
-          <li>Realiza operaciones aritméticas básicas.</li>
-          <li>Escribe expresiones utilizando operadores relacionales y lógicos.</li>
-          <li>Determina la prioridad de operadores en expresiones compuestas.</li>
-          <li>Ejemplifica el uso de asignación múltiple y operaciones con cadenas de texto.</li>
-        </ol>
+  <section>
+    <h2>Tipos de Estructuras Algorítmicas</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-arrow-right"></i>
+        <span>Secuenciales</span>
+        <p>Los pasos se ejecutan uno tras otro. <br><strong>Ejemplo:</strong> <span style="font-size:.98em;">Sumar dos números y mostrar el resultado.</span></p>
       </div>
+      <div class="card">
+        <i class="fas fa-random"></i>
+        <span>Selectivas</span>
+        <p>Permiten tomar decisiones. <br><strong>Ejemplo:</strong> <span style="font-size:.98em;">Si la nota &gt;= 60, aprobar; si no, desaprobar.</span></p>
+      </div>
+      <div class="card">
+        <i class="fas fa-sync"></i>
+        <span>Repetitivas</span>
+        <p>Repetición de instrucciones hasta cumplir una condición. <br><strong>Ejemplo:</strong> <span style="font-size:.98em;">Mostrar números del 1 al 10 en pantalla.</span></p>
+      </div>
+    </div>
+  </section>
 
-    </section>
-
-    <footer>
-      &copy; 2025 Facultad Politécnica - Universidad Nacional del Este | Algorítmica - Unidad 2
-    </footer>
-  </main>
-</body>
-</html>
+  <section>
+    <h2>Tipos de Datos y Operadores</h2>
+    <table>
+      <tr><th>Tipo de Dato</th><th>Ejemplo</th><th>Descripción</th></tr>
+      <tr><td>Entero</td><td>5, -11, 1340</td><td>Número sin decimales.</td></tr>
+      <tr><td>Real</td><td>4.6, -0.75, 3.0</td><td>Número con decimales.</td></tr>
+      <tr><td>Lógico</td><td>Verdadero / Falso</td><td>Valores booleanos (True/False).</td></tr>
+      <tr><td>Carácter</td><td>'A', '1', '?'</td><td>Un solo carácter.</td></tr>
+      <tr><td>Cadena</td><td>\"Hola\", \"Fpune2025\"</td><td>Secuencia de caracteres.</td></tr>
+    </table>
+    <table>
+      <tr><th>Operador</th><th>Símbolo</th><th>Ejemplo Uso</th><th>Descripción</th></tr>
+      <tr><td>Suma</td><td>+</td><td>a + b</td><td>Adición.</td></tr>
+      <tr><td>Resta</td><td>-</td><td>a - b</td><td>Sustracción.</td></tr>
+      <tr><td>Multiplicación</td><td>*</td><td>a * b</td><td>Producto.</td></tr>
+      <tr><td>División</td><td>/</td><td>a / b</td><td>División real.</td></tr>
+      <tr><td>División entera</td><td>div</td><td>a div b</td><td>Cociente entero.</td></tr>
+      <tr><td>Residuo</td><td>mod</td><td>a mod b</td><td>Residuo de división.</td></tr>
+      <tr><td>Mayor que</td><td>&gt;</td><td>a &gt; b</td><td>Comparación mayor.</td></tr>
+      <tr><td>Menor que</td><td>&lt;</td><td>a &lt; b</td><td>Comparación menor.</td></tr>
+      <tr><td>Igual</td><td>=</td><td>a = b</td><td>Comparación igualdad.</td></tr>
+      <tr><td>Y (lógico)</td><td>AND</td><td>A AND B</td><td>Ambos verdaderos.</td></tr>
+      <tr><td>O (lógico)</td><td>OR</td><td>A OR B</td><td>Al menos uno
