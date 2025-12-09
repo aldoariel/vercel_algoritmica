@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad III - Estructuras Básicas de un Algoritmo | Algorítmica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Design System Variables */
+        :root {
+            --color-primary: #1e3a8a;
+            --color-secondary: #3b82f6;
+            --color-accent: #10b981;
+            --color-white: #ffffff;
+            --color-gray-light: #f8fafc;
+            --color-gray: #6b7280;
+            --color-gray-dark: #374151;
+            --color-text: #1f2937;
+            --color-border: #e5e7eb;
+            --font-family: Arial, Helvetica, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-gray-light);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            box-shadow: var(--shadow-md);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h4 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #92400e;
+        }
+
+        /* Code Block */
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        tr:hover {
+            background-color: var(--color-gray-light);
+        }
+
+        /* List Styles */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* Activity Box */
+        .activity-box {
+            background: #ecfdf5;
+            border-left: 4px solid var(--color-accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .activity-box h4 {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        /* Icon Colors */
+        i.fa-stream { color: #3b82f6; }
+        i.fa-code-branch { color: #f59e0b; }
+        i.fa-sync-alt { color: #10b981; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--color-gray);
+            border-top: 1px solid var(--color-border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>Unidad III: Estructuras Básicas de un Algoritmo</h1>
+        <p>Facultad Politécnica · Universidad Nacional del Este · Admisión 2025</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Sección 1: Introducción -->
+    <section>
+        <h2><i class="fas fa-info-circle"></i> Introducción a la Unidad III</h2>
+        <p>
+            En esta unidad estudiaremos las <strong>estructuras básicas de un algoritmo</strong>, que son los 
+            componentes fundamentales de cualquier programa. Un programa es un conjunto de instrucciones que 
+            guían al computador para realizar actividades o resolver problemas específicos.
+        </p>
+        <p>
+            Los temas clave que cubriremos incluyen:
+        </p>
+        <ul>
+            <li><strong>Instrucciones:</strong> Acciones básicas que ejecuta el programa.</li>
+            <li><strong>Estructuras de control:</strong> Formas de organizar el flujo del programa.</li>
+            <li><strong>Elementos de un programa:</strong> Variables, constantes, bucles y acumuladores.</li>
+        </ul>
+    </section>
+
+    <!-- Sección 2: El Programa -->
+    <section>
+        <h2><i class="fas fa-code"></i> ¿Qué es un Programa?</h2>
+        <p>
+            Un <strong>programa</strong> es un conjunto de instrucciones —órdenes dadas al computador— que guían 
+            al computador para realizar alguna actividad o resolver un problema. Todo programa debe especificar 
+            claramente:
+        </p>
+        <ul>
+            <li><strong>Entrada:</strong> Los datos que ingresa el usuario o sistema.</li>
+            <li><strong>Proceso:</strong> El algoritmo de resolución (conjunto de operaciones).</li>
+            <li><strong>Salida:</strong> Los resultados que entrega el programa.</li>
+        </ul>
+        <div class="highlight-box">
+            <strong>Flujo general:</strong> Entrada → Algoritmo de resolución → Salida
+        </div>
+    </section>
+
+    <!-- Sección 3: Instrucciones -->
+    <section>
+        <h2><i class="fas fa-list"></i> Tipos de Instrucciones</h2>
+        <p>
+            Una <strong>instrucción</strong> es una acción que el programa debe realizar. Puede ser una operación 
+            matemática, lectura de datos, escritura de resultados, asignación, bifurcación, etc.
+        </p>
+
+        <h3>Tipos principales de instrucciones:</h3>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h4><i class="fas fa-play-circle"></i> Inicio/Fin</h4>
+                <p>Marca el comienzo y fin del programa. El programa comienza con una instrucción de Inicio y finaliza con Fin.</p>
+            </div>
+
+            <div class="card">
+                <h4><i class="fas fa-arrow-right"></i> Asignación</h4>
+                <p>Asignan valores a variables. Ejemplo: de>A ← 12</code></p>
+            </div>
+
+            <div class="card">
+                <h4><i class="fas fa-sign-in-alt"></i> Lectura</h4>
+                <p>Permiten ingresar datos en el programa. Ejemplo: de>Leer B, C</code></p>
+            </div>
+
+            <div class="card">
+                <h4><i class="fas fa-sign-out-alt"></i> Escritura</h4>
+                <p>Muestran resultados del programa. Ejemplo: de>Imprimir resultado</code></p>
+            </div>
+
+            <div class="card">
+                <h4><i class="fas fa-code-branch"></i> Bifurcación</h4>
+                <p>Toman decisiones basadas en condiciones. Interrumpen el orden secuencial.</p>
+            </div>
+        </div>
+
+        <h3>Programas Lineales vs No Lineales</h3>
+        <table>
+            <tr>
+                <th>Programa Lineal</th>
+                <th>Programa No Lineal</th>
+            </tr>
+            <tr>
+                <td>Acción 1 → Acción 2 → Acción 3 ... → Última acción</td>
+                <td>Las acciones pueden saltar (bifurcaciones, ciclos)</td>
+            </tr>
+            <tr>
+                <td>Orden secuencial simple</td>
+                <td>Orden secuencial con decisiones</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección 4: Asignación -->
+    <section>
+        <h2><i class="fas fa-equals"></i> Instrucciones de Asignación</h2>
+        <p>
+            La asignación permite guardar un valor en una variable. El operador de>←</code> es fundamental 
+            en pseudocódigo.
+        </p>
+
+        <h3>Ejemplos de asignación:</h3>
+        <pre>A ← 12
+B ← 23
+C ← 12.5
+suma ← A + B
+multiplicación ← A * B</pre>
+
+        <div class="highlight-box">
+            <strong>Importante:</strong> Antes de la ejecución, el valor de las variables es indeterminado. 
+            Si deseas un valor inicial, debes definirlo explícitamente: de>A ← 0, B ← 0, C ← 0</code>
+        </div>
+
+        <h3>Operadores de asignación compuesta:</h3>
+        <table>
+            <tr>
+                <th>Operador</th>
+                <th>Ejemplo</th>
+                <th>Significado</th>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>op1 ← op1 + op2</td>
+                <td>Suma y asigna</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>op1 ← op1 - op2</td>
+                <td>Resta y asigna</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>op1 ← op1 * op2</td>
+                <td>Multiplica y asigna</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>op1 ← op1 / op2</td>
+                <td>Divide y asigna</td>
+            </tr>
+        </table>
+
+        <h3>Ejercicio de asignación:</h3>
+        <p><strong>¿Cuál será el valor de C después de estas instrucciones?</strong></p>
+        <pre>A ← 12
+B ← A
+C ← B</pre>
+        <p><strong>Respuesta:</strong> C = 12 (se asigna el valor de A a B, y luego el de B a C)</p>
+    </section>
+
+    <!-- Sección 5: Lectura y Escritura -->
+    <section>
+        <h2><i class="fas fa-exchange-alt"></i> Lectura y Escritura de Datos</h2>
+
+        <h3>Lectura de Datos (Entrada)</h3>
+        <p>
+            La lectura permite introducir datos a la computadora desde teclado u otro dispositivo de entrada. 
+            Los datos se almacenan en las variables especificadas.
+        </p>
+        <pre>Leer nomVar1, nomVar2, nomVarN
+Leer B, C
+Leer nombreEmp, horasTrab</pre>
+
+        <p>
+            Es recomendable acompañar la lectura con un mensaje solicitando los datos:
+        </p>
+        <pre>Escribir "Ingrese el nombre del empleado:"
+Leer nombreEmp
+Escribir "Ingrese horas trabajadas:"
+Leer horasTrab</pre>
+
+        <h3>Escritura de Datos (Salida)</h3>
+        <p>
+            La escritura permite mostrar datos en pantalla, impresora u otro dispositivo de salida.
+        </p>
+        <pre>Imprimir nomVar1, nomVar2, nomVarN
+Imprimir nombreEmp
+Imprimir "NOMBRE: ", nombreEmp</pre>
+    </section>
+
+    <!-- Sección 6: Estructuras de Control -->
+    <section>
+        <h2><i class="fas fa-sitemap"></i> Estructuras de Control</h2>
+        <p>
+            Las estructuras de control determinan el orden y la forma en que se ejecutan las instrucciones. 
+            Existen tres tipos principales:
+        </p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h4><i class="fas fa-stream"></i> Secuencial</h4>
+                <p>Las instrucciones se ejecutan una tras otra, sin saltos ni decisiones.</p>
+            </div>
+            <div class="card">
+                <h4><i class="fas fa-code-branch"></i> Selectiva</h4>
+                <p>Toma decisiones: ejecuta un bloque u otro según una condición.</p>
+            </div>
+            <div class="card">
+                <h4><i class="fas fa-sync-alt"></i> Repetitiva</h4>
+                <p>Repite un bloque de instrucciones un número de veces definido o hasta cumplir una condición.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 7: Estructura Secuencial -->
+    <section>
+        <h2><i class="fas fa-stream"></i> Estructura Secuencial</h2>
+        <p>
+            En una estructura secuencial, las instrucciones se ejecutan una tras otra en el orden en que aparecen 
+            en el programa. No hay saltos ni decisiones.
+        </p>
+
+        <h3>Ejemplo: Suma y Cálculos Secuenciales</h3>
+        <pre>Escribir "Ingrese el primer número:"
+Leer a
+Escribir "Ingrese el segundo número:"
+Leer b
+resultado ← a + b
+resultado ← resultado * 2
+resultado ← resultado / a
+Escribir "El resultado final es: ", resultado</pre>
+
+        <div class="activity-box">
+            <h4><i class="fas fa-pencil-alt"></i> Actividad propuesta</h4>
+            <p>
+                Diseña un algoritmo secuencial que convierta grados Celsius a Fahrenheit 
+                usando la fórmula: F = (C × 9/5) + 32
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección 8: Estructura Selectiva -->
+    <section>
+        <h2><i class="fas fa-code-branch"></i> Estructura Selectiva (Condicional)</h2>
+        <p>
+            La estructura selectiva toma decisiones. Según una condición sea verdadera o falsa, 
+            ejecuta un bloque de instrucciones u otro.
+        </p>
+
+        <h3>a) Condicional Simple (SI)</h3>
+        <p>Ejecuta un bloque solo si la condición es verdadera:</p>
+        <pre>Si condición Entonces
+    Acción 1
+    Acción 2
+FinSi</pre>
+
+        <h3>Ejemplo: Descuento por compra</h3>
+        <pre>Escribir "Ingrese el monto de compra:"
+Leer compra
+Si compra >= 1000 Entonces
+    descuento ← compra * 0.10
+    pago ← compra - descuento
+    Escribir "Descuento aplicado: ", descuento
+    Escribir "Total a pagar: ", pago
+FinSi</pre>
+
+        <h3>b) Condicional Doble (SI / SINO)</h3>
+        <p>Selecciona entre dos caminos posibles:</p>
+        <pre>Si condición Entonces
+    Acción 1
+Sino
+    Acción 2
+FinSi</pre>
+
+        <h3>Ejemplo: Mayor de edad</h3>
+        <pre>Escribir "Ingrese su edad:"
+Leer edad
+Si edad >= 18 Entonces
+    Escribir "Es mayor de edad"
+Sino
+    Escribir "Es menor de edad"
+FinSi</pre>
+
+        <h3>c) Condicional Múltiple (Anidada)</h3>
+        <p>Permite múltiples alternativas anidando estructuras condicionales:</p>
+        <pre>Si condición1 Entonces
+    Acción 1
+Sino
+    Si condición2 Entonces
+        Acción 2
+    Sino
+        Si condición3 Entonces
+            Acción 3
+        Sino
+            Acción 4
+        FinSi
+    FinSi
+FinSi</pre>
+
+        <h3>Ejemplo: Clasificar un número</h3>
+        <pre>Escribir "Ingrese un número:"
+Leer numero
+Si numero > 0 Entonces
+    Escribir "El número es positivo"
+Sino
+    Si numero < 0 Entonces
+        Escribir "El número es negativo"
+    Sino
+        Escribir "El número es cero"
+    FinSi
+FinSi</pre>
+
+        <div class="activity-box">
+            <h4><i class="fas fa-pencil-alt"></i> Actividad propuesta</h4>
+            <p>
+                Diseña un algoritmo que lea tres notas de un estudiante y determine si está 
+                aprobado (promedio ≥ 60) o desaprobado usando estructura selectiva doble.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección 9: Estructura Repetitiva -->
+    <section>
+        <h2><i class="fas fa-sync-alt"></i> Estructura Repetitiva (Bucles)</h2>
+        <p>
+            La estructura repetitiva permite ejecutar un bloque de instrucciones múltiples veces, 
+            controladas por una condición o un contador. Esto se conoce también como ciclo o bucle.
+        </p>
+
+        <h3>Tipos principales:</h3>
+
+        <h4>1) Ciclo PARA (iteraciones conocidas)</h4>
+        <p>Se utiliza cuando se conoce de antemano el número de repeticiones:</p>
+        <pre>Para variable ← valorInicial Hasta valorFinal Hacer
+    Acción 1
+    Acción 2
+FinPara</pre>
+
+        <h3>Ejemplo: Imprimir números del 1 al 10</h3>
+        <pre>Para i ← 1 Hasta 10 Hacer
+    Escribir i
+FinPara</pre>
+
+        <h3>Ejemplo: Sumar números del 1 al 100</h3>
+        <pre>suma ← 0
+Para i ← 1 Hasta 100 Hacer
+    suma ← suma + i
+FinPara
+Escribir "Suma de 1 a 100: ", suma</pre>
+
+        <h4>2) Ciclo MIENTRAS (iteraciones desconocidas)</h4>
+        <p>Se utiliza cuando no se sabe cuántas veces se repetirá, depende de una condición:</p>
+        <pre>Mientras condición Hacer
+    Acción 1
+    Acción 2
+FinMientras</pre>
+
+        <h3>Ejemplo: Lectura con validación</h3>
+        <pre>Escribir "Ingrese un número positivo:"
+Leer n
+Mientras n <= 0 Hacer
+    Escribir "Valor inválido. Ingrese un número > 0:"
+    Leer n
+FinMientras
+Escribir "Valor aceptado: ", n</pre>
+
+        <div class="activity-box">
+            <h4><i class="fas fa-pencil-alt"></i> Actividad propuesta</h4>
+            <p>
+                Diseña un algoritmo que use un ciclo PARA para imprimir los números pares entre 1 y 50 
+                y calcular su suma.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección 10: Contadores y Acumuladores -->
+    <section>
+        <h2><i class="fas fa-calculator"></i> Contadores y Acumuladores</h2>
+
+        <h3>Contador</h3>
+        <p>
+            Un <strong>contador</strong> es una variable que se incrementa en una unidad constante 
+            cada vez que se ejecuta una instrucción dentro de un bucle. Se usa para contar eventos.
+        </p>
+
+        <h3>Ejemplo: Contar números impares</h3>
+        <pre>contadorImpares ← 0
+Para i ← 1 Hasta 5 Hacer
+    Leer numero
+    Si numero mod 2 ≠ 0 Entonces
+        contadorImpares ← contadorImpares + 1
+    FinSi
+FinPara
+Escribir "Se ingresaron ", contadorImpares, " números impares"</pre>
+
+        <div class="highlight-box">
+            <strong>Tres momentos del contador:</strong>
+            <ol>
+                <li>Inicialización: contador ← 0</li>
+                <li>Incremento: contador ← contador + 1</li>
+                <li>Impresión/reporte: después del bucle</li>
+            </ol>
+        </div>
+
+        <h3>Acumulador</h3>
+        <p>
+            Un <strong>acumulador</strong> (o sumador) es una variable que acumula 
+            el resultado de operaciones variables dentro de un bucle. A diferencia del contador, 
+            el incremento es variable, no constante.
+        </p>
+
+        <h3>Ejemplo: Suma acumulada</h3>
+        <pre>Escribir "Ingrese un número positivo:"
+Leer n
+sumador ← 0
+i ← 1
+Mientras i <= n Hacer
+    sumador ← sumador + i
+    i ← i + 1
+FinMientras
+Escribir "La suma de 1 a ", n, " es ", sumador</pre>
+
+        <div class="highlight-box">
+            <strong>Tres momentos del acumulador:</strong>
+            <ol>
+                <li>Inicialización: acumulador ← 0</li>
+                <li>Incremento variable: acumulador ← acumulador + valor</li>
+                <li>Impresión/reporte: después del bucle</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Sección 11: Elementos de un programa -->
+    <section>
+        <h2><i class="fas fa-cogs"></i> Elementos de un Programa</h2>
+
+        <table>
+            <tr>
+                <th>Elemento</th>
+                <th>Descripción</th>
+                <th>Ejemplo</th>
+            </tr>
+            <tr>
+                <td>Palabras Reservadas</td>
+                <td>Palabras especiales del lenguaje</td>
+                <td>Si, Sino, Para, Mientras, Leer, Escribir</td>
+            </tr>
+            <tr>
+                <td>Identificadores</td>
+                <td>Nombres de variables, funciones, constantes</td>
+                <td>edad, nombre, suma</td>
+            </tr>
+            <tr>
+                <td>Caracteres Especiales</td>
+                <td>Símbolos de operación</td>
+                <td>+, -, *, /, ←, =, >, <</td>
+            </tr>
+            <tr>
+                <td>Constantes</td>
+                <td>Valores fijos que no cambian</td>
+                <td>PI = 3.14159, MAXVAL = 100</td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>Espacios de memoria para almacenar datos</td>
+                <td>edad, temperatura, resultado</td>
+            </tr>
+            <tr>
+                <td>Expresiones</td>
+                <td>Combinación de operandos y operadores</td>
+                <td>a + b, (x * 2) / 3</td>
+            </tr>
+            <tr>
+                <td>Instrucciones</td>
+                <td>Órdenes que ejecuta el programa</td>
+                <td>Leer x, Escribir y, z ← a + b</td>
+            </tr>
+        </table>
+
+        <h3>Partes constitutivas de un programa:</h3>
+        <ul>
+            <li><strong>Declaración de variables:</strong> Definir las variables que se usarán.</li>
+            <li><strong>Instrucciones:</strong> Las acciones que resuelven el problema.</li>
+            <li><strong>Bucles:</strong> Estructuras para repetir código.</li>
+            <li><strong>Estructuras de control:</strong> Controlan el flujo del programa.</li>
+        </ul>
+    </section>
+
+    <!-- Sección 12: Resumen y Preguntas -->
+    <section>
+        <h2><i class="fas fa-check-circle"></i> Resumen de la Unidad III</h2>
+
+        <h3>Puntos clave:</h3>
+        <ul>
+            <li>Un programa es un conjunto de instrucciones organizadas en <strong>entrada → proceso → salida</strong>.</li>
+            <li>Las <strong>instrucciones</strong> son: inicio/fin, asignación, lectura, escritura y bifurcación.</li>
+            <li>Las <strong>estructuras de control</strong> son: secuencial, selectiva y repetitiva.</li>
+            <li>Los <strong>contadores</strong> cuentan eventos (incremento constante).</li>
+            <li>Los <strong>acumuladores</strong> suman valores (incremento variable).</li>
+            <li>El <strong>pseudocódigo</strong> es el primer paso para diseñar un algoritmo antes de programar.</li>
+        </ul>
+
+        <h3>Preguntas de autoevaluación:</h3>
+        <ol>
+            <li>¿Cuáles son las partes constitutivas de un programa?</li>
+            <li>¿Cuándo usarías un ciclo PARA vs un ciclo MIENTRAS?</li>
+            <li>¿Cuál es la diferencia entre un contador y un acumulador?</li>
+            <li>¿Cuándo aplicarías una estructura selectiva simple vs doble vs múltiple?</li>
+            <li>¿Cómo inicializar correctamente un contador y un acumulador?</li>
+        </ol>
+    </section>
+
+    <!-- Material de Descarga -->
+    <section>
+        <h2><i class="fas fa-download"></i> Material Complementario</h2>
+        <p>Descarga los siguientes recursos para profundizar en los temas de la Unidad III:</p>
+        <ul>
+            <li><strong>Presentación Unidad III:</strong> Diapositivas con conceptos y ejemplos</li>
+            <li><strong>Guía de Ejercicios:</strong> 20+ ejercicios resueltos y propuestos</li>
+            <li><strong>Pseudocódigos de ejemplo:</strong> Algoritmos completos paso a paso</li>
+            <li><strong>Tareas interactivas:</strong> Verificación automática de pseudocódigo</li>
+        </ul>
+        <div class="highlight-box">
+            Los materiales están disponibles en tu plataforma de aprendizaje (Moodle). 
+            Consulta con tus docentes para acceder.
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Facultad Politécnica - Universidad Nacional del Este</p>
+    <p>Algorítmica · Proceso de Admisión 2025</p>
+</footer>
+
+</body>
+</html>
