@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad IV - Vectores (Arrays) | Algorítmica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Design System Variables */
+        :root {
+            --color-primary: #1e3a8a;
+            --color-secondary: #3b82f6;
+            --color-accent: #10b981;
+            --color-white: #ffffff;
+            --color-gray-light: #f8fafc;
+            --color-gray: #6b7280;
+            --color-gray-dark: #374151;
+            --color-text: #1f2937;
+            --color-border: #e5e7eb;
+            --font-family: Arial, Helvetica, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-gray-light);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            box-shadow: var(--shadow-md);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h4 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #92400e;
+        }
+
+        /* Code Block */
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        tr:hover {
+            background-color: var(--color-gray-light);
+        }
+
+        /* List Styles */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* Activity Box */
+        .activity-box {
+            background: #ecfdf5;
+            border-left: 4px solid var(--color-accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .activity-box h4 {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        /* Icon Colors */
+        i.fa-array { color: #3b82f6; }
+        i.fa-list { color: #f59e0b; }
+        i.fa-search { color: #10b981; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--color-gray);
+            border-top: 1px solid var(--color-border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>Unidad IV: Vectores (Arrays Unidimensionales)</h1>
+        <p>Facultad Politécnica · Universidad Nacional del Este · Admisión 2025</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Sección 1: Introducción -->
+    <section>
+        <h2><i class="fas fa-info-circle"></i> Introducción a la Unidad IV</h2>
+        <p>
+            En esta unidad estudiaremos los <strong>vectores o arrays unidimensionales</strong>, 
+            que son estructuras de datos fundamentales para almacenar colecciones de elementos del mismo tipo.
+        </p>
+        <p>
+            Un vector permite acceder a múltiples datos relacionados mediante un único nombre de variable 
+            y un índice numérico, facilitando el procesamiento de grandes volúmenes de información de forma ordenada.
+        </p>
+        <p>Los temas que cubriremos incluyen:</p>
+        <ul>
+            <li>Concepto y características de vectores.</li>
+            <li>Declaración e inicialización.</li>
+            <li>Acceso a elementos mediante índices.</li>
+            <li>Recorrido de vectores.</li>
+            <li>Búsqueda en vectores.</li>
+            <li>Ordenamiento de vectores.</li>
+            <li>Aplicaciones prácticas.</li>
+        </ul>
+    </section>
+
+    <!-- Sección 2: Concepto de Vector -->
+    <section>
+        <h2><i class="fas fa-database"></i> ¿Qué es un Vector?</h2>
+        <p>
+            Un <strong>vector</strong> (o array unidimensional) es una estructura de datos que almacena 
+            una colección de elementos del <strong>mismo tipo</strong>, accesibles mediante un índice.
+        </p>
+
+        <h3>Características principales:</h3>
+        <ul>
+            <li><strong>Homogéneo:</strong> Todos los elementos tienen el mismo tipo de dato.</li>
+            <li><strong>Indexado:</strong> Se accede a cada elemento mediante una posición (índice).</li>
+            <li><strong>Contíguo en memoria:</strong> Los elementos se almacenan en posiciones consecutivas.</li>
+            <li><strong>Tamaño fijo:</strong> El número de elementos se define al crear el vector.</li>
+            <li><strong>Acceso rápido:</strong> El acceso a cualquier elemento es O(1) - tiempo constante.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>Ejemplo visual:</strong> Un vector de 5 números enteros:
+            <br><br>
+            de>Vector: [12, 25, 8, 34, 19]</code>
+            <br>
+            Índices: [0,  1, 2,  3,  4]
+        </div>
+
+        <h3>Diferencia entre lista y vector:</h3>
+        <table>
+            <tr>
+                <th>Característica</th>
+                <th>Vector</th>
+                <th>Lista</th>
+            </tr>
+            <tr>
+                <td>Tamaño</td>
+                <td>Fijo</td>
+                <td>Variable</td>
+            </tr>
+            <tr>
+                <td>Almacenamiento</td>
+                <td>Contíguo</td>
+                <td>Disperso (enlaces)</td>
+            </tr>
+            <tr>
+                <td>Acceso</td>
+                <td>Directo por índice</td>
+                <td>Secuencial</td>
+            </tr>
+            <tr>
+                <td>Velocidad acceso</td>
+                <td>Rápido O(1)</td>
+                <td>Lento O(n)</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Sección 3: Declaración e Inicialización -->
+    <section>
+        <h2><i class="fas fa-cogs"></i> Declaración e Inicialización de Vectores</h2>
+
+        <h3>Declaración de un vector:</h3>
+        <p>La declaración especifica el tipo de dato y el tamaño del vector:</p>
+        <pre>
+Var nombre_vector[tamaño] : tipo_dato
+
+Ejemplos:
+Var números[10] : Entero
+Var calificaciones[5] : Real
+Var nombres[20] : Cadena
+Var flags[100] : Lógico
+        </pre>
+
+        <h3>Inicialización de un vector:</h3>
+        <p>La inicialización asigna valores a los elementos del vector:</p>
+        <pre>
+// Inicialización individual
+números[0] ← 12
+números[1] ← 25
+números[2] ← 8
+
+// Inicialización con ciclo
+Para i ← 0 Hasta 9 Hacer
+    números[i] ← 0  // Inicializa todos en cero
+FinPara
+
+// Inicialización literal
+Var días[7] : Cadena
+días ← ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+        </pre>
+
+        <div class="activity-box">
+            <h4><i class="fas fa-pencil-alt"></i> Actividad propuesta</h4>
+            <p>
+                Declara un vector de 10 elementos de tipo entero llamado "edades". 
+                Luego, inicializa cada elemento con valores entre 18 y 65 usando un ciclo.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección 4: Acceso a Elementos -->
+    <section>
+        <h2><i class="fas fa-hand-pointer"></i> Acceso a Elementos de un Vector</h2>
+
+        <p>
+            Para acceder a un elemento del vector, se utiliza el nombre del vector seguido 
+            del índice entre corchetes.
+        </p>
+
+        <h3>Sintaxis:</h3>
+        <pre>
+nombre_vector[índice]
+
+Ejemplos de acceso:
+Escribir números[0]        // Imprime el primer elemento
+Escribir números[4]        // Imprime el quinto elemento
+x ← números[3]             // Asigna el cuarto elemento a x
+números[5] ← 99            // Asigna 99 al sexto elemento
+        </pre>
+
+        <div class="highlight-box">
+            <strong>Importante:</strong> En la mayoría de lenguajes, los índices comienzan en 0.
+            <br>- Primer elemento: índice 0
+            <br>- Segundo elemento: índice 1
+            <br>- Elemento n: índice n-1
+        </div>
+
+        <h3>Ejemplo: Acceso con ciclo</h3>
+        <pre>
+// Leer 5 números y almacenarlos en un vector
+Var números[5] : Entero
+Para i ← 0 Hasta 4 Hacer
+    Escribir "Ingrese el número ", i+1, ":"
+    Leer números[i]
+FinPara
+
+// Mostrar los números leídos
+Para i ← 0 Hasta 4 Hacer
+    Escribir "Posición ", i, ": ", números[i]
+FinPara
+        </pre>
+    </section>
+
+    <!-- Sección 5: Recorrido de Vectores -->
+    <section>
+        <h2><i class="fas fa-sync-alt"></i> Recorrido de Vectores</h2>
+
+        <p>
+            Recorrer un vector significa acceder a cada uno de sus elementos de forma ordenada, 
+            generalmente usando un ciclo.
+        </p>
+
+        <h3>
