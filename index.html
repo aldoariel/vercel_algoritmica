@@ -1,1802 +1,2340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorítmica - Proceso de Admisión 2025 | Facultad Politécnica UNE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Algorítmica - Proceso de Admisión 2026 | Facultad Politécnica UNE
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Design System Variables */
-        :root {
-            --color-primary: #1e3a8a;
-            --color-secondary: #3b82f6;
-            --color-accent: #10b981;
-            --color-white: #ffffff;
-            --color-gray-light: #f8fafc;
-            --color-gray: #6b7280;
-            --color-gray-dark: #374151;
-            --color-text: #1f2937;
-            --color-border: #e5e7eb;
-            --font-family: Arial, Helvetica, sans-serif;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
+      /* Design System Variables */
+      :root {
+        --color-primary: #1e3a8a;
+        --color-secondary: #3b82f6;
+        --color-accent: #10b981;
+        --color-white: #ffffff;
+        --color-gray-light: #f8fafc;
+        --color-gray: #6b7280;
+        --color-gray-dark: #374151;
+        --color-text: #1f2937;
+        --color-border: #e5e7eb;
+        --font-family: Arial, Helvetica, sans-serif;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--color-gray-light);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
+      body {
+        font-family: var(--font-family);
+        background-color: var(--color-gray-light);
+        color: var(--color-text);
+        line-height: 1.6;
+      }
 
-        /* Header & Navigation */
-        .header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            color: white;
-            box-shadow: var(--shadow-md);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+      /* Header & Navigation */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-secondary) 100%
+        );
+        color: white;
+        box-shadow: var(--shadow-md);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
 
-        .header-top {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 8px 0;
-        }
+      .header-top {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 8px 0;
+      }
 
-        .header-top .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-        }
+      .header-top .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+      }
 
-        .header-main {
-            padding: 20px 0;
-        }
+      .header-main {
+        padding: 20px 0;
+      }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
 
-        .logo {
-            font-size: 2.5rem;
-        }
+      .logo {
+        font-size: 2.5rem;
+      }
 
-        .logo-text h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
+      .logo-text h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+      }
 
-        .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin: 0;
-        }
+      .logo-text p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 0;
+      }
 
+      .nav {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .nav a:hover {
+        opacity: 0.8;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-secondary) 100%
+        );
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.95;
+        margin-bottom: 10px;
+      }
+
+      .hero-meta {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+      }
+
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+        color: var(--color-primary);
+        margin-bottom: 10px;
+      }
+
+      .section-title p {
+        color: var(--color-gray);
+        font-size: 1.1rem;
+      }
+
+      /* Units Grid */
+      .units-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .unit-card {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-md);
+        transition: all 0.3s ease;
+        border: 2px solid var(--color-border);
+      }
+
+      .unit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-primary);
+      }
+
+      .unit-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .unit-icon {
+        font-size: 2.5rem;
+      }
+
+      .unit-title {
+        flex: 1;
+      }
+
+      .unit-title h3 {
+        color: var(--color-primary);
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+      }
+
+      .unit-hours {
+        color: var(--color-gray);
+        font-size: 0.9rem;
+      }
+
+      .unit-topics {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+
+      .unit-topics li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-gray-dark);
+        font-size: 0.95rem;
+      }
+
+      .unit-topics li:last-child {
+        border-bottom: none;
+      }
+
+      .unit-materials {
+        margin-top: 20px;
+      }
+
+      .unit-materials h4 {
+        color: var(--color-primary);
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      .materials-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .material-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-gray-dark);
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: var(--color-secondary);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-secondary {
+        background-color: var(--color-accent);
+      }
+
+      .btn-secondary:hover {
+        background-color: #059669;
+      }
+
+      /* Resources Section */
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .resource-card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--color-accent);
+      }
+
+      .resource-card h3 {
+        color: var(--color-primary);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .resource-card p {
+        color: var(--color-gray-dark);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      /* Schedule Section */
+      .schedule-info {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .schedule-item {
+        padding: 20px;
+        background: var(--color-gray-light);
+        border-radius: 8px;
+        border-left: 4px solid var(--color-primary);
+      }
+
+      .schedule-item h4 {
+        color: var(--color-primary);
+        margin-bottom: 10px;
+      }
+
+      .schedule-item p {
+        color: var(--color-gray-dark);
+        margin: 5px 0;
+      }
+
+      /* Professors Section */
+      .professors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .professor-card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-md);
+        text-align: center;
+      }
+
+      .professor-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-secondary)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 2rem;
+      }
+
+      .professor-card h3 {
+        color: var(--color-primary);
+        margin-bottom: 5px;
+      }
+
+      .professor-card p {
+        color: var(--color-gray);
+        margin: 5px 0;
+      }
+
+      .professor-contact {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--color-border);
+      }
+
+      /* Evaluation Section */
+      .evaluation-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .evaluation-item {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .evaluation-weight {
+        font-size: 2.5rem;
+        color: var(--color-primary);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .evaluation-name {
+        color: var(--color-gray-dark);
+        font-weight: 600;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 40px 0 20px;
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        margin: 8px 0;
+        display: block;
+        font-size: 0.95rem;
+      }
+
+      .footer-section a:hover {
+        color: var(--color-accent);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 0.9rem;
+      }
+
+      /* Info Banner */
+      .info-banner {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin: 40px 0;
+        text-align: center;
+      }
+
+      .info-banner h3 {
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .nav a:hover {
-            opacity: 0.8;
+          display: none;
         }
 
         .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            border-radius: 2px;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
+          display: flex;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: white;
+          font-size: 1.8rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            margin-bottom: 10px;
+          font-size: 1rem;
         }
 
         .hero-meta {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
-        .hero-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
+          flex-direction: column;
+          gap: 10px;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--color-primary);
-            margin-bottom: 10px;
+          font-size: 1.8rem;
         }
 
-        .section-title p {
-            color: var(--color-gray);
-            font-size: 1.1rem;
-        }
-
-        /* Units Grid */
         .units-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+          grid-template-columns: 1fr;
         }
 
-        .unit-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 2px solid var(--color-border);
-        }
-
-        .unit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-primary);
-        }
-
-        .unit-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .unit-icon {
-            font-size: 2.5rem;
-        }
-
-        .unit-title {
-            flex: 1;
-        }
-
-        .unit-title h3 {
-            color: var(--color-primary);
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
-
-        .unit-hours {
-            color: var(--color-gray);
-            font-size: 0.9rem;
-        }
-
-        .unit-topics {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .unit-topics li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--color-border);
-            color: var(--color-gray-dark);
-            font-size: 0.95rem;
-        }
-
-        .unit-topics li:last-child {
-            border-bottom: none;
-        }
-
-        .unit-materials {
-            margin-top: 20px;
-        }
-
-        .unit-materials h4 {
-            color: var(--color-primary);
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-
-        .materials-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .material-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--color-gray-dark);
-            font-size: 0.9rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--color-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background-color: var(--color-secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background-color: var(--color-accent);
-        }
-
-        .btn-secondary:hover {
-            background-color: #059669;
-        }
-
-        /* Resources Section */
+        .schedule-grid,
+        .professors-grid,
         .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .resource-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .resource-card h3 {
-            color: var(--color-primary);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .resource-card p {
-            color: var(--color-gray-dark);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        /* Schedule Section */
-        .schedule-info {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .schedule-item {
-            padding: 20px;
-            background: var(--color-gray-light);
-            border-radius: 8px;
-            border-left: 4px solid var(--color-primary);
-        }
-
-        .schedule-item h4 {
-            color: var(--color-primary);
-            margin-bottom: 10px;
-        }
-
-        .schedule-item p {
-            color: var(--color-gray-dark);
-            margin: 5px 0;
-        }
-
-        /* Professors Section */
-        .professors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .professor-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-            text-align: center;
-        }
-
-        .professor-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .professor-card h3 {
-            color: var(--color-primary);
-            margin-bottom: 5px;
-        }
-
-        .professor-card p {
-            color: var(--color-gray);
-            margin: 5px 0;
-        }
-
-        .professor-contact {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--color-border);
-        }
-
-        /* Evaluation Section */
-        .evaluation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .evaluation-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .evaluation-weight {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .evaluation-name {
-            color: var(--color-gray-dark);
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 60px;
+          grid-template-columns: 1fr;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+          grid-template-columns: 1fr;
         }
-
-        .footer-section h3 {
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            margin: 8px 0;
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-        }
-
-        /* Info Banner */
-        .info-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .info-banner h3 {
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .units-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .schedule-grid,
-            .professors-grid,
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <div class="header-top">
-            <div class="container">
-                <div><i class="fas fa-map-marker-alt"></i> Ciudad del Este, Paraguay</div>
-                <div><i class="fas fa-envelope"></i> secretaria@fpune.edu.py</div>
-            </div>
+      <div class="header-top">
+        <div class="container">
+          <div>
+            <i class="fas fa-map-marker-alt"></i> Ciudad del Este, Paraguay
+          </div>
+          <div><i class="fas fa-envelope"></i> secretaria@fpune.edu.py</div>
         </div>
-        <div class="header-main">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <div class="logo"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="logo-text">
-                            <h1>Facultad Politécnica</h1>
-                            <p>Universidad Nacional del Este</p>
-                        </div>
-                    </div>
-                    <nav class="nav">
-                        <a href="#home"><i class="fas fa-home"></i> Inicio</a>
-                        <a href="#unidades"><i class="fas fa-book"></i> Unidades</a>
-                        <a href="#recursos"><i class="fas fa-tools"></i> Recursos</a>
-                        <a href="#cronograma"><i class="fas fa-calendar"></i> Cronograma</a>
-                        <a href="#docentes"><i class="fas fa-chalkboard-teacher"></i> Docentes</a>
-                    </nav>
-                    <button class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
+      </div>
+      <div class="header-main">
+        <div class="container">
+          <div class="header-content">
+            <div class="logo-section">
+              <div class="logo"><i class="fas fa-graduation-cap"></i></div>
+              <div class="logo-text">
+                <h1>Facultad Politécnica</h1>
+                <p>Universidad Nacional del Este</p>
+              </div>
             </div>
+            <nav class="nav">
+              <a href="#home"><i class="fas fa-home"></i> Inicio</a>
+              <a href="#unidades"><i class="fas fa-book"></i> Unidades</a>
+              <a href="#recursos"><i class="fas fa-tools"></i> Recursos</a>
+              <a href="#cronograma"
+                ><i class="fas fa-calendar"></i> Cronograma</a
+              >
+              <a href="#docentes"
+                ><i class="fas fa-chalkboard-teacher"></i> Docentes</a
+              >
+            </nav>
+            <button class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <h2>Algorítmica - Proceso de Admisión 2025</h2>
-            <p>Análisis de Sistemas &amp; Ingeniería de Sistemas</p>
-            <div class="hero-meta">
-                <div class="hero-meta-item">
-                    <i class="fas fa-code"></i>
-                    <span>3c</span>
-                </div>
-                <div class="hero-meta-item">
-                    <i class="fas fa-clock"></i>
-                    <span>---</span>
-                </div>
-                <div class="hero-meta-item">
-                    <i class="fas fa-calendar-week"></i>
-                    <span>Miércoles</span>
-                </div>
-            </div>
+      <div class="container">
+        <h2>Algorítmica - Proceso de Admisión 2025</h2>
+        <p>Análisis de Sistemas &amp; Ingeniería de Sistemas</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <i class="fas fa-code"></i>
+            <span>3c</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-clock"></i>
+            <span>---</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-calendar-week"></i>
+            <span>Miércoles</span>
+          </div>
         </div>
+      </div>
     </section>
     <!-- Course Info Banner -->
-    <section style="background: white;">
-        <div class="container">
-            <div class="info-banner">
-                <h3><i class="fas fa-bullhorn"></i> Bienvenidos a Algorítmica</h3>
-                <p>Este portal contiene todo el material de refuerzo para las  unidades del curso. Explora cada sección para acceder a presentaciones, guías, ejercicios y recursos adicionales.</p>
-            </div>
+    <section style="background: white">
+      <div class="container">
+        <div class="info-banner">
+          <h3><i class="fas fa-bullhorn"></i> Bienvenidos a Algorítmica</h3>
+          <p>
+            Este portal contiene s el material de refuerzo para las unidades del
+            curso. Explora cada sección para acceder a presentaciones, guías,
+            ejercicios y recursos adicionales.
+          </p>
         </div>
+      </div>
     </section>
 
     <!-- Units Section -->
-    <section id="unidades" style="background: var(--color-gray-light);">
-        <div class="container">
-            <div class="section-title">
-                <h2>Unidades del Curso</h2>
-                <p>Material de refuerzo organizado por unidades temáticas</p>
-            </div>
-            <div class="units-grid">
-                <!-- Unit 1 -->
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">🧮</div>
-                        <div class="unit-title">
-                                <h3><a href="UnidadI.html">Unidad I</a></h3>
-                            <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
-                        </div>
-                    </div>
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Lógica Matemática</h4>
-                    <ul class="unit-topics">
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Lógica de proposiciones</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Valores de verdad</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Proposiciones simples y compuestas</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Conectivos lógicos</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Tablas de verdad</li>
-                    </ul>
-                    <div class="unit-materials">
-                        <h4>Materiales disponibles:</h4>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <i class="fas fa-file-powerpoint" style="color: #d04423;"></i>
-                                Presentación interactiva
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-file-pdf" style="color: #dc2626;"></i>
-                                Guía didáctica con ejercicios
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-tasks" style="color: var(--color-accent);"></i>
-                                Tarea de proposiciones
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-video" style="color: #dc2626;"></i>
-                                Videos explicativos
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Unit 2 -->
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">⚙️</div>
-                        <div class="unit-title">
-                          <h3><a href="UnidadII.html">Unidad II</a></h3>
-                            <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
-                        </div>
-                    </div>
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Lógica del Algoritmo</h4>
-                    <ul class="unit-topics">
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Definición de algoritmo</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Tipos de datos</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Operadores aritméticos</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Operadores relacionales</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Operadores lógicos</li>
-                    </ul>
-                    <div class="unit-materials">
-                        <h4>Materiales disponibles:</h4>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <i class="fas fa-file-powerpoint" style="color: #d04423;"></i>
-                                Presentación de conceptos
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-code" style="color: var(--color-secondary);"></i>
-                                Ejemplos prácticos
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-tasks" style="color: var(--color-accent);"></i>
-                                Ejercicios de aplicación
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Unit 3 -->
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">🔄</div>
-                        <div class="unit-title">
-                            <h3><a href="UnidadIII.html">Unidad III</a></h3>
-                            <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
-                        </div>
-                    </div>
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Estructuras Básicas</h4>
-                    <ul class="unit-topics">
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Instrucciones de asignación</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Entrada y salida</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Estructuras secuenciales</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Estructuras condicionales</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Estructuras repetitivas</li>
-                    </ul>
-                    <div class="unit-materials">
-                        <h4>Materiales disponibles:</h4>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <i class="fas fa-project-diagram" style="color: var(--color-primary);"></i>
-                                Diagramas de flujo
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-file-code" style="color: var(--color-secondary);"></i>
-                                Pseudocódigo
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-tasks" style="color: var(--color-accent);"></i>
-                                Ejercicios paso a paso
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Unit 4 -->
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">📊</div>
-                        <div class="unit-title">
-                             <h3><a href="UnidadIV.html">Unidad IV</a></h3>
-                            <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
-                        </div>
-                    </div>
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Vectores</h4>
-                    <ul class="unit-topics">
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Definición de vectores</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Declaración e inicialización</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Operaciones con vectores</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Algoritmos de búsqueda</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Algoritmos de ordenación</li>
-                    </ul>
-                    <div class="unit-materials">
-                        <h4>Materiales disponibles:</h4>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <i class="fas fa-code" style="color: var(--color-secondary);"></i>
-                                Ejemplos de código
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-tasks" style="color: var(--color-accent);"></i>
-                                Ejercicios prácticos
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-cogs" style="color: var(--color-primary);"></i>
-                                Algoritmos implementados
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Unit 5 -->
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">🔢</div>
-                        <div class="unit-title">
-                            <h3>Unidad V</h3>
-                            <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
-                        </div>
-                    </div>
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Matrices</h4>
-                    <ul class="unit-topics">
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Definición de matrices</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Declaración bidimensional</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Operaciones con matrices</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Recorrido de matrices</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> Aplicaciones prácticas</li>
-                    </ul>
-                    <div class="unit-materials">
-                        <h4>Materiales disponibles:</h4>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <i class="fas fa-images" style="color: var(--color-accent);"></i>
-                                Ejemplos visuales
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-code" style="color: var(--color-secondary);"></i>
-                                Código implementado
-                            </div>
-                            <div class="material-item">
-                                <i class="fas fa-project-diagram" style="color: var(--color-primary);"></i>
-                                Proyectos finales
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="unidades" style="background: var(--color-gray-light)">
+      <div class="container">
+        <div class="section-title">
+          <h2>Unidades del Curso</h2>
+          <p>Material de refuerzo organizado por unidades temáticas</p>
         </div>
+        <div class="units-grid">
+          <!-- Unit 1 -->
+          <div class="unit-card">
+            <div class="unit-header">
+              <div class="unit-icon">🧮</div>
+              <div class="unit-title">
+                <h3><a href="UnidadI.html">Unidad I</a></h3>
+                <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
+              </div>
+            </div>
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Lógica Matemática
+            </h4>
+            <ul class="unit-topics">
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Lógica de proposiciones
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Valores de verdad
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Proposiciones simples y compuestas
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Conectivos lógicos
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Tablas de verdad
+              </li>
+            </ul>
+            <div class="unit-materials">
+              <h4>Materiales disponibles:</h4>
+              <div class="materials-list">
+                <div class="material-item">
+                  <i class="fas fa-file-powerpoint" style="color: #d04423"></i>
+                  Presentación interactiva
+                </div>
+                <div class="material-item">
+                  <i class="fas fa-file-pdf" style="color: #dc2626"></i>
+                  Guía didáctica con ejercicios
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-tasks"
+                    style="color: var(--color-accent)"
+                  ></i>
+                  Tarea de proposiciones
+                </div>
+                <div class="material-item">
+                  <i class="fas fa-video" style="color: #dc2626"></i>
+                  Videos explicativos
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 2 -->
+          <div class="unit-card">
+            <div class="unit-header">
+              <div class="unit-icon">⚙️</div>
+              <div class="unit-title">
+                <h3><a href="UnidadII.html">Unidad II</a></h3>
+                <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
+              </div>
+            </div>
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Lógica del Algoritmo
+            </h4>
+            <ul class="unit-topics">
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Definición de algoritmo
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Tipos de datos
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Operadores aritméticos
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Operadores relacionales
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Operadores lógicos
+              </li>
+            </ul>
+            <div class="unit-materials">
+              <h4>Materiales disponibles:</h4>
+              <div class="materials-list">
+                <div class="material-item">
+                  <i class="fas fa-file-powerpoint" style="color: #d04423"></i>
+                  Presentación de conceptos
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-code"
+                    style="color: var(--color-secondary)"
+                  ></i>
+                  Ejemplos prácticos
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-tasks"
+                    style="color: var(--color-accent)"
+                  ></i>
+                  Ejercicios de aplicación
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 3 -->
+          <div class="unit-card">
+            <div class="unit-header">
+              <div class="unit-icon">🔄</div>
+              <div class="unit-title">
+                <h3><a href="UnidadIII.html">Unidad III</a></h3>
+                <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
+              </div>
+            </div>
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Estructuras Básicas
+            </h4>
+            <ul class="unit-topics">
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Instrucciones de asignación
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Entrada y salida
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Estructuras secuenciales
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Estructuras condicionales
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Estructuras repetitivas
+              </li>
+            </ul>
+            <div class="unit-materials">
+              <h4>Materiales disponibles:</h4>
+              <div class="materials-list">
+                <div class="material-item">
+                  <i
+                    class="fas fa-project-diagram"
+                    style="color: var(--color-primary)"
+                  ></i>
+                  Diagramas de flujo
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-file-code"
+                    style="color: var(--color-secondary)"
+                  ></i>
+                  Pseudocódigo
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-tasks"
+                    style="color: var(--color-accent)"
+                  ></i>
+                  Ejercicios paso a paso
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 4 -->
+          <div class="unit-card">
+            <div class="unit-header">
+              <div class="unit-icon">📊</div>
+              <div class="unit-title">
+                <h3><a href="UnidadIV.html">Unidad IV</a></h3>
+                <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
+              </div>
+            </div>
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Vectores
+            </h4>
+            <ul class="unit-topics">
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Definición de vectores
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Declaración e inicialización
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Operaciones con vectores
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Algoritmos de búsqueda
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Algoritmos de ordenación
+              </li>
+            </ul>
+            <div class="unit-materials">
+              <h4>Materiales disponibles:</h4>
+              <div class="materials-list">
+                <div class="material-item">
+                  <i
+                    class="fas fa-code"
+                    style="color: var(--color-secondary)"
+                  ></i>
+                  Ejemplos de código
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-tasks"
+                    style="color: var(--color-accent)"
+                  ></i>
+                  Ejercicios prácticos
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-cogs"
+                    style="color: var(--color-primary)"
+                  ></i>
+                  Algoritmos implementados
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 5 -->
+          <div class="unit-card">
+            <div class="unit-header">
+              <div class="unit-icon">🔢</div>
+              <div class="unit-title">
+                <h3>Unidad V</h3>
+                <p class="unit-hours"><i class="fas fa-clock"></i> 8 horas</p>
+              </div>
+            </div>
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Matrices
+            </h4>
+            <ul class="unit-topics">
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Definición de matrices
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Declaración bidimensional
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Operaciones con matrices
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Recorrido de matrices
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--color-accent)"
+                ></i>
+                Aplicaciones prácticas
+              </li>
+            </ul>
+            <div class="unit-materials">
+              <h4>Materiales disponibles:</h4>
+              <div class="materials-list">
+                <div class="material-item">
+                  <i
+                    class="fas fa-images"
+                    style="color: var(--color-accent)"
+                  ></i>
+                  Ejemplos visuales
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-code"
+                    style="color: var(--color-secondary)"
+                  ></i>
+                  Código implementado
+                </div>
+                <div class="material-item">
+                  <i
+                    class="fas fa-project-diagram"
+                    style="color: var(--color-primary)"
+                  ></i>
+                  Proyectos finales
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Resources Section -->
-    <section id="recursos" style="background: white;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Recursos y Herramientas</h2>
-                <p>Software complementario recomendado para el desarrollo de algoritmos. OBS no se contempla su uso en clase ni en evaluaciones</p>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h3><i class="fas fa-laptop-code"></i> PSeInt</h3>
-                    <p>Herramienta educativa para escribir algoritmos en pseudocódigo de manera sencilla e intuitiva.</p>
-                    <a href="http://pseint.sourceforge.net/" target="_blank" class="btn btn-secondary">Descargar</a>
-                </div>
-                <div class="resource-card">
-                    <h3><i class="fas fa-project-diagram"></i> DFD</h3>
-                    <p>Diseñador de diagramas de flujo para visualizar la lógica de tus algoritmos de forma gráfica.</p>
-                    <a href="https://www.dfd.com/" target="_blank" class="btn btn-secondary">Descargar</a>
-                </div>
-                <div class="resource-card">
-                    <h3><i class="fas fa-sitemap"></i> Flowgorithm</h3>
-                    <p>Editor gráfico que permite crear algoritmos mediante diagramas de flujo interactivos.</p>
-                    <a href="http://www.flowgorithm.org/" target="_blank" class="btn btn-secondary">Descargar</a>
-                </div>
-            </div>
-
-            <div style="margin-top: 50px;">
-                <h3 style="color: var(--color-primary); margin-bottom: 20px; text-align: center;">Bibliografía Recomendada</h3>
-                <div class="schedule-info">
-                    <h4 style="color: var(--color-primary); margin-bottom: 15px;">Bibliografía Básica:</h4>
-                    <ul style="color: var(--color-gray-dark); line-height: 2;">
-                        <li><i class="fas fa-book"></i> ALMEIDA RODRIGUEZ, M. Angel. <em>Metodología de la Programación a través del Pseudocódigo</em></li>
-                        <li><i class="fas fa-book"></i> JOYANES AGUILAR, Luis. <em>Fundamentos de Programación, Algoritmos y Estructura de Datos</em></li>
-                        <li><i class="fas fa-book"></i> PABLO SZNAJDLEDER. <em>Algoritmos a Fondo: Con implementaciones en C y Java</em></li>
-                    </ul>
-                    <h4 style="color: var(--color-primary); margin: 25px 0 15px;">Bibliografía Complementaria:</h4>
-                    <ul style="color: var(--color-gray-dark); line-height: 2;">
-                        <li><i class="fas fa-book"></i> ALCALDE, Eduardo y GARCÍA, Miguel. <em>Metodología de la Programación</em></li>
-                        <li><i class="fas fa-book"></i> BRITIZ CHAMORRO, Victor Alfredo. <em>Libro de Ejercicios de Pseudocódigo</em></li>
-                        <li><i class="fas fa-book"></i> FILHO, Edgar de Alencar. <em>Iniciación a la Lógica Matemática</em></li>
-                    </ul>
-                </div>
-            </div>
+    <section id="recursos" style="background: white">
+      <div class="container">
+        <div class="section-title">
+          <h2>Recursos y Herramientas</h2>
+          <p>
+            Software complementario recomendado para el desarrollo de
+            algoritmos. OBS no se contempla su uso en clase ni en evaluaciones
+          </p>
         </div>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3><i class="fas fa-laptop-code"></i> PSeInt</h3>
+            <p>
+              Herramienta educativa para escribir algoritmos en pseudocódigo de
+              manera sencilla e intuitiva.
+            </p>
+            <a
+              href="http://pseint.sourceforge.net/"
+              target="_blank"
+              class="btn btn-secondary"
+              >Descargar</a
+            >
+          </div>
+          <div class="resource-card">
+            <h3><i class="fas fa-project-diagram"></i> DFD</h3>
+            <p>
+              Diseñador de diagramas de flujo para visualizar la lógica de tus
+              algoritmos de forma gráfica.
+            </p>
+            <a
+              href="https://www.dfd.com/"
+              target="_blank"
+              class="btn btn-secondary"
+              >Descargar</a
+            >
+          </div>
+          <div class="resource-card">
+            <h3><i class="fas fa-sitemap"></i> Flowgorithm</h3>
+            <p>
+              Editor gráfico que permite crear algoritmos mediante diagramas de
+              flujo interactivos.
+            </p>
+            <a
+              href="http://www.flowgorithm.org/"
+              target="_blank"
+              class="btn btn-secondary"
+              >Descargar</a
+            >
+          </div>
+        </div>
+
+        <div style="margin-top: 50px">
+          <h3
+            style="
+              color: var(--color-primary);
+              margin-bottom: 20px;
+              text-align: center;
+            "
+          >
+            Bibliografía Recomendada
+          </h3>
+          <div class="schedule-info">
+            <h4 style="color: var(--color-primary); margin-bottom: 15px">
+              Bibliografía Básica:
+            </h4>
+            <ul style="color: var(--color-gray-dark); line-height: 2">
+              <li>
+                <i class="fas fa-book"></i> ALMEIDA RODRIGUEZ, M. Angel.
+                <em
+                  >Metodología de la Programación a través del Pseudocódigo</em
+                >
+              </li>
+              <li>
+                <i class="fas fa-book"></i> JOYANES AGUILAR, Luis.
+                <em
+                  >Fundamentos de Programación, Algoritmos y Estructura de
+                  Datos</em
+                >
+              </li>
+              <li>
+                <i class="fas fa-book"></i> PABLO SZNAJDLEDER.
+                <em>Algoritmos a Fondo: Con implementaciones en C y Java</em>
+              </li>
+            </ul>
+            <h4 style="color: var(--color-primary); margin: 25px 0 15px">
+              Bibliografía Complementaria:
+            </h4>
+            <ul style="color: var(--color-gray-dark); line-height: 2">
+              <li>
+                <i class="fas fa-book"></i> ALCALDE, Eduardo y GARCÍA, Miguel.
+                <em>Metodología de la Programación</em>
+              </li>
+              <li>
+                <i class="fas fa-book"></i> BRITIZ CHAMORRO, Victor Alfredo.
+                <em>Libro de Ejercicios de Pseudocódigo</em>
+              </li>
+              <li>
+                <i class="fas fa-book"></i> FILHO, Edgar de Alencar.
+                <em>Iniciación a la Lógica Matemática</em>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Schedule Section -->
-    <section id="cronograma" style="background: var(--color-gray-light);">
-        <div class="container">
-            <div class="section-title">
-                <h2>Cronograma del Curso</h2>
-                <p>Distribución semanal de contenidos y evaluaciones</p>
-            </div>
-            <div class="schedule-info">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <p style="font-size: 1.1rem; color: var(--color-gray-dark);"><strong>Día:</strong> Miércoles</p>
-                    <p style="font-size: 1.1rem; color: var(--color-gray-dark);"><strong>Ingeniería de Sistemas:</strong> 08:00 - 12:00 hrs</p>
-                    <p style="font-size: 1.1rem; color: var(--color-gray-dark);"><strong>Análisis de Sistemas:</strong> 18:00 - 22:00 hrs</p>
-                </div>
-                <div class="schedule-grid">
-                    <div class="schedule-item">
-                        <h4>Semanas 1-2</h4>
-                        <p><i class="fas fa-calendar-day"></i> Unidad I - Lógica Matemática</p>
-                        <p><i class="fas fa-clipboard-check"></i> Evaluación Unidad I</p>
-                    </div>
-                    <div class="schedule-item">
-                        <h4>Semanas 3-4</h4>
-                        <p><i class="fas fa-calendar-day"></i> Unidad II - Lógica del Algoritmo</p>
-                        <p><i class="fas fa-clipboard-check"></i> Práctica y Evaluación</p>
-                    </div>
-                    <div class="schedule-item">
-                        <h4>Semanas 5-6</h4>
-                        <p><i class="fas fa-calendar-day"></i> Unidad III - Estructuras Básicas</p>
-                        <p><i class="fas fa-clipboard-check"></i> Aplicaciones Prácticas</p>
-                    </div>
-                    <div class="schedule-item">
-                        <h4>Semanas 7-8</h4>
-                        <p><i class="fas fa-calendar-day"></i> Unidad IV - Vectores</p>
-                        <p><i class="fas fa-clipboard-check"></i> Algoritmos de Búsqueda</p>
-                    </div>
-                    <div class="schedule-item">
-                        <h4>Semanas 9-10</h4>
-                        <p><i class="fas fa-calendar-day"></i> Unidad V - Matrices</p>
-                        <p><i class="fas fa-clipboard-check"></i> Intensificación de Contenidos</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 40px;">
-                <h3 style="color: var(--color-primary); margin-bottom: 20px; text-align: center;">Criterios de Evaluación</h3>
-                <div class="evaluation-grid">
-                    <div class="evaluation-item">
-                        <div class="evaluation-weight">100%</div>
-                        <div class="evaluation-name">Examen Final</div>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 20px; color: var(--color-gray-dark);"><strong>--:</strong> - | <strong>- :</strong> .</p>
-            </div>
+    <section id="cronograma" style="background: var(--color-gray-light)">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cronograma del Curso</h2>
+          <p>Distribución semanal de contenidos y evaluaciones</p>
         </div>
+        <div class="schedule-info">
+          <div style="text-align: center; margin-bottom: 30px">
+            <p style="font-size: 1.1rem; color: var(--color-gray-dark)">
+              <strong>Día:</strong> Miércoles
+            </p>
+            <p style="font-size: 1.1rem; color: var(--color-gray-dark)">
+              <strong>Ingeniería de Sistemas:</strong> 08:00 - 12:00 hrs
+            </p>
+            <p style="font-size: 1.1rem; color: var(--color-gray-dark)">
+              <strong>Análisis de Sistemas:</strong> 18:00 - 22:00 hrs
+            </p>
+          </div>
+          <div class="schedule-grid">
+            <div class="schedule-item">
+              <h4>Semanas 1-2</h4>
+              <p>
+                <i class="fas fa-calendar-day"></i> Unidad I - Lógica Matemática
+              </p>
+              <p><i class="fas fa-clipboard-check"></i> Evaluación Unidad I</p>
+            </div>
+            <div class="schedule-item">
+              <h4>Semanas 3-4</h4>
+              <p>
+                <i class="fas fa-calendar-day"></i> Unidad II - Lógica del
+                Algoritmo
+              </p>
+              <p>
+                <i class="fas fa-clipboard-check"></i> Práctica y Evaluación
+              </p>
+            </div>
+            <div class="schedule-item">
+              <h4>Semanas 5-6</h4>
+              <p>
+                <i class="fas fa-calendar-day"></i> Unidad III - Estructuras
+                Básicas
+              </p>
+              <p>
+                <i class="fas fa-clipboard-check"></i> Aplicaciones Prácticas
+              </p>
+            </div>
+            <div class="schedule-item">
+              <h4>Semanas 7-8</h4>
+              <p><i class="fas fa-calendar-day"></i> Unidad IV - Vectores</p>
+              <p>
+                <i class="fas fa-clipboard-check"></i> Algoritmos de Búsqueda
+              </p>
+            </div>
+            <div class="schedule-item">
+              <h4>Semanas 9-10</h4>
+              <p><i class="fas fa-calendar-day"></i> Unidad V - Matrices</p>
+              <p>
+                <i class="fas fa-clipboard-check"></i> Intensificación de
+                Contenidos
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px">
+          <h3
+            style="
+              color: var(--color-primary);
+              margin-bottom: 20px;
+              text-align: center;
+            "
+          >
+            Criterios de Evaluación
+          </h3>
+          <div class="evaluation-grid">
+            <div class="evaluation-item">
+              <div class="evaluation-weight">100%</div>
+              <div class="evaluation-name">Examen Final</div>
+            </div>
+          </div>
+          <p
+            style="
+              text-align: center;
+              margin-top: 20px;
+              color: var(--color-gray-dark);
+            "
+          >
+            <strong>--:</strong> - | <strong>- :</strong> .
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Professors Section -->
-    <section id="docentes" style="background: white;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Cuerpo Docente</h2>
-                <p>Profesionales comprometidos con tu formación académica</p>
-            </div>
-            <div class="professors-grid">
-                <div class="professor-card">
-                    <div class="professor-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Ing. Richard Manuel Pereira Ovelar</h3>
-                    <p><strong>Ingeniero de Sistemas</strong></p>
-                    <p>FPUNE</p>
-                    <div class="professor-contact">
-                        <p><i class="fas fa-envelope"></i> -</p>
-                        <p><i class="fas fa-clock"></i> </p>
-                    </div>
-                </div>
-                <div class="professor-card">
-                    <div class="professor-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Lic. Mag. Aldo Ariel Gómez Ortega</h3>
-                    <p><strong>Analista de Sistemas</strong></p>
-                    <p>FPUNE</p>
-                    <div class="professor-contact">
-                        <p><i class="fas fa-envelope"></i> -</p>
-                        <p><i class="fas fa-clock"></i> -</p>
-                    </div>
-                </div>
-            </div>
+    <section id="docentes" style="background: white">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cuerpo Docente</h2>
+          <p>Profesionales comprometidos con tu formación académica</p>
         </div>
+        <div class="professors-grid">
+          <div class="professor-card">
+            <div class="professor-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Ing. Richard Manuel Pereira Ovelar</h3>
+            <p><strong>Ingeniero de Sistemas</strong></p>
+            <p>FPUNE</p>
+            <div class="professor-contact">
+              <p><i class="fas fa-envelope"></i> -</p>
+              <p><i class="fas fa-clock"></i></p>
+            </div>
+          </div>
+          <div class="professor-card">
+            <div class="professor-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Lic. Mag. Aldo Ariel Gómez Ortega</h3>
+            <p><strong>Analista de Sistemas</strong></p>
+            <p>FPUNE</p>
+            <div class="professor-contact">
+              <p><i class="fas fa-envelope"></i> -</p>
+              <p><i class="fas fa-clock"></i> -</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Facultad Politécnica</h3>
-                    <p>Universidad Nacional del Este</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Km 8 Lado Acaray, Calle Universidad Nacional del Este c/ Rca. Del Paraguay</p>
-                    <p><i class="fas fa-phone"></i> 061 575.112/13 – 577.261/62</p>
-                    <p><i class="fas fa-envelope"></i> secretaria@fpune.edu.py</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Enlaces</h3>
-                    <a href="http://www.fpune.edu.py" target="_blank"><i class="fas fa-external-link-alt"></i> Sitio Web Oficial</a>
-                    <a href="#unidades"><i class="fas fa-book"></i> Material del Curso</a>
-                    <a href="#recursos"><i class="fas fa-download"></i> Descargas</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Facultad Politécnica - Universidad Nacional del Este. Todos los derechos reservados.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Facultad Politécnica</h3>
+            <p>Universidad Nacional del Este</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contacto</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Km 8 Lado Acaray, Calle
+              Universidad Nacional del Este c/ Rca. Del Paraguay
+            </p>
+            <p><i class="fas fa-phone"></i> 061 575.112/13 – 577.261/62</p>
+            <p><i class="fas fa-envelope"></i> secretaria@fpune.edu.py</p>
+          </div>
+          <div class="footer-section">
+            <h3>Enlaces</h3>
+            <a href="http://www.fpune.edu.py" target="_blank"
+              ><i class="fas fa-external-link-alt"></i> Sitio Web Oficial</a
+            >
+            <a href="#unidades"
+              ><i class="fas fa-book"></i> Material del Curso</a
+            >
+            <a href="#recursos"><i class="fas fa-download"></i> Descargas</a>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Facultad Politécnica - Universidad Nacional del Este.
+            Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
     </footer>
-    <div style="display: none;">
-        <div class="slide active cover-slide">
-            <div>
-                <h1>Lógica Matemática</h1>
-                <p class="subtitle">Algorítmica - Unidad I</p>
-                <div class="teachers">
-                    <div class="teacher"><strong>Ing. Richard Manuel Pereira Ovelar</strong></div>
-                    <div class="teacher"><strong>Lic. Aldo Ariel Gómez Ortega</strong></div>
-                </div>
-                <div class="institution">
-                    <p><strong>Facultad Politécnica</strong></p>
-                    <p>Universidad Nacional del Este</p>
-                    <p>Ciudad del Este, Paraguay</p>
-                </div>
-                <div class="year">2025</div>
+    <div style="display: none">
+      <div class="slide active cover-slide">
+        <div>
+          <h1>Lógica Matemática</h1>
+          <p class="subtitle">Algorítmica - Unidad I</p>
+          <div class="teachers">
+            <div class="teacher">
+              <strong>Ing. Richard Manuel Pereira Ovelar</strong>
             </div>
+            <div class="teacher">
+              <strong>Lic. Aldo Ariel Gómez Ortega</strong>
+            </div>
+          </div>
+          <div class="institution">
+            <p><strong>Facultad Politécnica</strong></p>
+            <p>Universidad Nacional del Este</p>
+            <p>Ciudad del Este, Paraguay</p>
+          </div>
+          <div class="year">2025</div>
         </div>
+      </div>
 
-        <!-- Slide 2: Índice -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Índice de Contenidos</h2>
-            </div>
-            <div class="slide-content">
-                <ol>
-                    <li>¿Qué es un Algoritmo?</li>
-                    <li>Competencias Genéricas y Específicas</li>
-                    <li>Proposiciones y Valores Lógicos</li>
-                    <li>Proposiciones Simples y Compuestas</li>
-                    <li>Conectivos Lógicos</li>
-                    <li>Tablas de Verdad</li>
-                    <li>Conectivas: Negación, Conjunción, Disyunción</li>
-                    <li>Conectivas: Condicional y Bicondicional</li>
-                    <li>Tautología, Contradicción y Contingencia</li>
-                    <li>Ejercicios Propuestos</li>
-                </ol>
-            </div>
+      <!-- Slide 2: Índice -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Índice de Contenidos</h2>
         </div>
-
-        <!-- Slide 3: ¿Qué es un Algoritmo? -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>¿Qué es un Algoritmo?</h2>
-            </div>
-            <div class="slide-content">
-                <p>Un <strong>algoritmo</strong> es un conjunto ordenado y finito de operaciones que permite hallar la solución de un problema.</p>
-                <div class="example-box">
-                    <h3>Ejemplo: Sumar dos números</h3>
-                    <ol>
-                        <li><strong>Inicio</strong></li>
-                        <li>Leer el primer número (A)</li>
-                        <li>Leer el segundo número (B)</li>
-                        <li>Calcular la suma: C = A + B</li>
-                        <li>Mostrar el resultado C</li>
-                        <li><strong>Fin</strong></li>
-                    </ol>
-                </div>
-            </div>
+        <div class="slide-content">
+          <ol>
+            <li>¿Qué es un Algoritmo?</li>
+            <li>Competencias Genéricas y Específicas</li>
+            <li>Proposiciones y Valores Lógicos</li>
+            <li>Proposiciones Simples y Compuestas</li>
+            <li>Conectivos Lógicos</li>
+            <li>Tablas de Verdad</li>
+            <li>Conectivas: Negación, Conjunción, Disyunción</li>
+            <li>Conectivas: Condicional y Bicondicional</li>
+            <li>Tautología, Contradicción y Contingencia</li>
+            <li>Ejercicios Propuestos</li>
+          </ol>
         </div>
+      </div>
 
-        <!-- Slide 4: Competencias Genéricas -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Competencias Genéricas</h2>
-            </div>
-            <div class="slide-content">
-                <ul>
-                    <li>Capacidad <strong>creativa, innovadora y proactiva</strong></li>
-                    <li>Capacidad de <strong>abstracción, análisis, síntesis</strong> y sentido de la organización</li>
-                    <li>Capacidad de formular de manera creativa <strong>alternativas de solución</strong></li>
-                    <li>Capacidad de <strong>organizar y planificar</strong> el tiempo</li>
-                    <li>Capacidad de <strong>trabajo en equipo</strong></li>
-                    <li>Habilidades en el uso de las <strong>tecnologías de la información</strong></li>
-                </ul>
-            </div>
+      <!-- Slide 3: ¿Qué es un Algoritmo? -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>¿Qué es un Algoritmo?</h2>
         </div>
-
-        <!-- Slide 5: Competencias Específicas -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Competencias Específicas</h2>
-            </div>
-            <div class="slide-content">
-                <ul>
-                    <li><strong>Identificar</strong> proposiciones y sus valores de verdad</li>
-                    <li><strong>Construir y resolver</strong> tablas de verdad</li>
-                    <li><strong>Aplicar</strong> conectivos lógicos correctamente</li>
-                    <li><strong>Diferenciar</strong> proposiciones simples y compuestas</li>
-                    <li><strong>Resolver</strong> problemas de lógica proposicional</li>
-                    <li><strong>Fundamentar</strong> decisiones basadas en lógica matemática</li>
-                    <li><strong>Aplicar</strong> lógica en diseño de algoritmos</li>
-                </ul>
-            </div>
+        <div class="slide-content">
+          <p>
+            Un <strong>algoritmo</strong> es un conjunto ordenado y finito de
+            operaciones que permite hallar la solución de un problema.
+          </p>
+          <div class="example-box">
+            <h3>Ejemplo: Sumar dos números</h3>
+            <ol>
+              <li><strong>Inicio</strong></li>
+              <li>Leer el primer número (A)</li>
+              <li>Leer el segundo número (B)</li>
+              <li>Calcular la suma: C = A + B</li>
+              <li>Mostrar el resultado C</li>
+              <li><strong>Fin</strong></li>
+            </ol>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 6: Proposiciones - Definición -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>¿Qué es una Proposición?</h2>
-            </div>
-            <div class="slide-content">
-                <p>Una <strong>proposición</strong> es una oración declarativa que puede ser <strong>verdadera (V)</strong> o <strong>falsa (F)</strong>, pero no ambas simultáneamente.</p>
-                <div class="example-box">
-                    <h3>Ejemplos:</h3>
-                    <ul>
-                        <li>"El cielo es azul" - <strong>Es una proposición</strong></li>
-                        <li>"5 + 3 = 8" - <strong>Es una proposición</strong></li>
-                        <li>"¿Qué hora es?" - <strong>NO es una proposición</strong> (es una pregunta)</li>
-                        <li>"¡Cierra la puerta!" - <strong>NO es una proposición</strong> (es una orden)</li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Slide 4: Competencias Genéricas -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Competencias Genéricas</h2>
         </div>
-
-        <!-- Slide 7: Ejemplos de Proposiciones -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Ejemplos de Proposiciones</h2>
-            </div>
-            <div class="slide-content">
-                <ul>
-                    <li>"Paraguay es un país de América del Sur" - <span class="highlight">Verdadero (V)</span></li>
-                    <li>"2 + 2 = 5" - <span class="highlight">Falso (F)</span></li>
-                    <li>"El agua hierve a 100°C" - <span class="highlight">Verdadero (V)</span></li>
-                    <li>"Todos los números pares son divisibles por 2" - <span class="highlight">Verdadero (V)</span></li>
-                    <li>"La Tierra es plana" - <span class="highlight">Falso (F)</span></li>
-                    <li>"10 es mayor que 15" - <span class="highlight">Falso (F)</span></li>
-                </ul>
-            </div>
+        <div class="slide-content">
+          <ul>
+            <li>Capacidad <strong>creativa, innovadora y proactiva</strong></li>
+            <li>
+              Capacidad de <strong>abstracción, análisis, síntesis</strong> y
+              sentido de la organización
+            </li>
+            <li>
+              Capacidad de formular de manera creativa
+              <strong>alternativas de solución</strong>
+            </li>
+            <li>
+              Capacidad de <strong>organizar y planificar</strong> el tiempo
+            </li>
+            <li>Capacidad de <strong>trabajo en equipo</strong></li>
+            <li>
+              Habilidades en el uso de las
+              <strong>tecnologías de la información</strong>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Slide 8: Valores Lógicos -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Valores Lógicos</h2>
-            </div>
-            <div class="slide-content">
-                <p>Toda proposición tiene asociado un <strong>valor de verdad</strong>:</p>
-                <ul>
-                    <li><strong>Verdadero (V)</strong>: cuando la proposición es cierta</li>
-                    <li><strong>Falso (F)</strong>: cuando la proposición es incorrecta</li>
-                </ul>
-                <div class="example-box">
-                    <p><strong>Ejemplos con valores:</strong></p>
-                    <p>p: "La lógica es fundamental en programación" → <strong>V</strong></p>
-                    <p>q: "3 + 4 = 10" → <strong>F</strong></p>
-                    <p>r: "Un algoritmo tiene un número finito de pasos" → <strong>V</strong></p>
-                </div>
-            </div>
+      <!-- Slide 5: Competencias Específicas -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Competencias Específicas</h2>
         </div>
-
-        <!-- Slide 9: Proposiciones Simples -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Proposiciones Simples</h2>
-            </div>
-            <div class="slide-content">
-                <p>Una <strong>proposición simple</strong> (o atómica) es aquella que <strong>no puede descomponerse</strong> en proposiciones más sencillas.</p>
-                <div class="example-box">
-                    <h3>Ejemplos:</h3>
-                    <ul>
-                        <li>p: "Hoy es martes"</li>
-                        <li>q: "Hace calor"</li>
-                        <li>r: "El número 7 es primo"</li>
-                        <li>s: "María estudia informática"</li>
-                    </ul>
-                </div>
-                <p>Cada una expresa <strong>una sola idea</strong> y no puede dividirse en partes más simples.</p>
-            </div>
+        <div class="slide-content">
+          <ul>
+            <li>
+              <strong>Identificar</strong> proposiciones y sus valores de verdad
+            </li>
+            <li><strong>Construir y resolver</strong> tablas de verdad</li>
+            <li><strong>Aplicar</strong> conectivos lógicos correctamente</li>
+            <li>
+              <strong>Diferenciar</strong> proposiciones simples y compuestas
+            </li>
+            <li><strong>Resolver</strong> problemas de lógica proposicional</li>
+            <li>
+              <strong>Fundamentar</strong> decisiones basadas en lógica
+              matemática
+            </li>
+            <li><strong>Aplicar</strong> lógica en diseño de algoritmos</li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Slide 10: Proposiciones Compuestas -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Proposiciones Compuestas</h2>
-            </div>
-            <div class="slide-content">
-                <p>Una <strong>proposición compuesta</strong> (o molecular) es aquella formada por <strong>dos o más proposiciones simples</strong> unidas por conectivos lógicos.</p>
-                <div class="example-box">
-                    <h3>Ejemplos:</h3>
-                    <ul>
-                        <li>"Hoy es martes <strong>y</strong> hace calor"</li>
-                        <li>"El número 7 es primo <strong>o</strong> es par"</li>
-                        <li>"<strong>Si</strong> llueve, <strong>entonces</strong> me quedo en casa"</li>
-                        <li>"<strong>No</strong> hace frío"</li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Slide 6: Proposiciones - Definición -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>¿Qué es una Proposición?</h2>
         </div>
-
-        <!-- Slide 11: Conectivos - Introducción -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectivos Lógicos</h2>
-            </div>
-            <div class="slide-content">
-                <p>Los <strong>conectivos lógicos</strong> son símbolos que permiten <strong>unir proposiciones simples</strong> para formar proposiciones compuestas.</p>
-                <p>Cada conectivo tiene un <strong>significado específico</strong> y determina el valor de verdad de la proposición resultante.</p>
-                <div class="example-box">
-                    <p><strong>Ejemplo:</strong></p>
-                    <p>p: "Estudio" | q: "Apruebo"</p>
-                    <p>p <span class="logic-symbol">∧</span> q: "Estudio <strong>y</strong> apruebo"</p>
-                </div>
-            </div>
+        <div class="slide-content">
+          <p>
+            Una <strong>proposición</strong> es una oración declarativa que
+            puede ser <strong>verdadera (V)</strong> o
+            <strong>falsa (F)</strong>, pero no ambas simultáneamente.
+          </p>
+          <div class="example-box">
+            <h3>Ejemplos:</h3>
+            <ul>
+              <li>"El cielo es azul" - <strong>Es una proposición</strong></li>
+              <li>"5 + 3 = 8" - <strong>Es una proposición</strong></li>
+              <li>
+                "¿Qué hora es?" - <strong>NO es una proposición</strong> (es una
+                pregunta)
+              </li>
+              <li>
+                "¡Cierra la puerta!" -
+                <strong>NO es una proposición</strong> (es una orden)
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 12: Conectivos - Lista Completa -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectivos Lógicos Principales</h2>
-            </div>
-            <div class="slide-content">
-                <table>
-                    <tr>
-                        <th>Conectivo</th>
-                        <th>Símbolo</th>
-                        <th>Nombre</th>
-                    </tr>
-                    <tr>
-                        <td>NO</td>
-                        <td><span class="logic-symbol">¬</span></td>
-                        <td>Negación</td>
-                    </tr>
-                    <tr>
-                        <td>Y</td>
-                        <td><span class="logic-symbol">∧</span></td>
-                        <td>Conjunción</td>
-                    </tr>
-                    <tr>
-                        <td>O</td>
-                        <td><span class="logic-symbol">∨</span></td>
-                        <td>Disyunción</td>
-                    </tr>
-                    <tr>
-                        <td>SI... ENTONCES</td>
-                        <td><span class="logic-symbol">→</span></td>
-                        <td>Condicional</td>
-                    </tr>
-                    <tr>
-                        <td>SI Y SOLO SI</td>
-                        <td><span class="logic-symbol">↔</span></td>
-                        <td>Bicondicional</td>
-                    </tr>
-                </table>
-            </div>
+      <!-- Slide 7: Ejemplos de Proposiciones -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Ejemplos de Proposiciones</h2>
         </div>
-
-        <!-- Slide 13: Ejemplos de NO Proposiciones -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Oraciones que NO son Proposiciones</h2>
-            </div>
-            <div class="slide-content">
-                <ol>
-                    <li>"¿Dónde vives?" - <strong>Pregunta</strong></li>
-                    <li>"¡Qué día tan hermoso!" - <strong>Exclamación</strong></li>
-                    <li>"Abre la ventana" - <strong>Orden o mandato</strong></li>
-                    <li>"Ojalá llueva mañana" - <strong>Deseo</strong></li>
-                    <li>"x + 5 = 10" - <strong>Expresión con variable</strong> (no es V o F hasta conocer x)</li>
-                    <li>"Esta oración es falsa" - <strong>Paradoja</strong></li>
-                    <li>"Por favor, ayúdame" - <strong>Petición</strong></li>
-                    <li>"El mayor número primo" - <strong>Frase sin verbo</strong></li>
-                </ol>
-            </div>
+        <div class="slide-content">
+          <ul>
+            <li>
+              "Paraguay es un país de América del Sur" -
+              <span class="highlight">Verdadero (V)</span>
+            </li>
+            <li>"2 + 2 = 5" - <span class="highlight">Falso (F)</span></li>
+            <li>
+              "El agua hierve a 100°C" -
+              <span class="highlight">Verdadero (V)</span>
+            </li>
+            <li>
+              "Todos los números pares son divisibles por 2" -
+              <span class="highlight">Verdadero (V)</span>
+            </li>
+            <li>
+              "La Tierra es plana" - <span class="highlight">Falso (F)</span>
+            </li>
+            <li>
+              "10 es mayor que 15" - <span class="highlight">Falso (F)</span>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Slide 14: ¿Cuáles son Proposiciones? -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Análisis: ¿Cuáles son Proposiciones?</h2>
-            </div>
-            <div class="slide-content">
-                <ol style="line-height: 2;">
-                    <li>"El deporte es saludable" → <strong>SÍ</strong> (proposición)</li>
-                    <li>"¿Qué hora es?" → <strong>NO</strong> (pregunta)</li>
-                    <li>"2 + 3 = 5" → <strong>SÍ</strong> (proposición verdadera)</li>
-                    <li>"¡Qué hermoso día!" → <strong>NO</strong> (exclamación)</li>
-                    <li>"El patio está mojado" → <strong>SÍ</strong> (proposición)</li>
-                    <li>"Cierra la puerta" → <strong>NO</strong> (orden)</li>
-                    <li>"x es mayor que 10" → <strong>NO</strong> (tiene variable indefinida)</li>
-                    <li>"La lógica es importante" → <strong>SÍ</strong> (proposición)</li>
-                </ol>
-            </div>
+      <!-- Slide 8: Valores Lógicos -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Valores Lógicos</h2>
         </div>
-
-        <!-- Slide 15: Tablas de Verdad - Introducción -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Tablas de Verdad</h2>
-            </div>
-            <div class="slide-content">
-                <p>Una <strong>tabla de verdad</strong> es una representación que muestra <strong>todos los valores posibles</strong> de una proposición compuesta según los valores de sus proposiciones simples.</p>
-                <p>Las tablas de verdad fueron desarrolladas por el filósofo y matemático <strong>Ludwig Wittgenstein</strong> y son fundamentales para:</p>
-                <ul>
-                    <li>Analizar la validez de argumentos lógicos</li>
-                    <li>Diseñar circuitos digitales</li>
-                    <li>Programar estructuras de control</li>
-                    <li>Verificar equivalencias lógicas</li>
-                </ul>
-            </div>
+        <div class="slide-content">
+          <p>
+            Toda proposición tiene asociado un <strong>valor de verdad</strong>:
+          </p>
+          <ul>
+            <li>
+              <strong>Verdadero (V)</strong>: cuando la proposición es cierta
+            </li>
+            <li>
+              <strong>Falso (F)</strong>: cuando la proposición es incorrecta
+            </li>
+          </ul>
+          <div class="example-box">
+            <p><strong>Ejemplos con valores:</strong></p>
+            <p>
+              p: "La lógica es fundamental en programación" → <strong>V</strong>
+            </p>
+            <p>q: "3 + 4 = 10" → <strong>F</strong></p>
+            <p>
+              r: "Un algoritmo tiene un número finito de pasos" →
+              <strong>V</strong>
+            </p>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 16: Método para Construir Tablas - Paso 1 -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Construir Tablas de Verdad - Paso 1</h2>
-            </div>
-            <div class="slide-content">
-                <h3>Determinar columnas y renglones</h3>
-                <p><strong>Fórmula:</strong> Número de renglones = <strong>2<sup>n</sup></strong></p>
-                <p>Donde <strong>n</strong> es el número de proposiciones simples diferentes.</p>
-                <div class="example-box">
-                    <p><strong>Ejemplos:</strong></p>
-                    <ul>
-                        <li>1 proposición (p): 2<sup>1</sup> = <strong>2 renglones</strong></li>
-                        <li>2 proposiciones (p, q): 2<sup>2</sup> = <strong>4 renglones</strong></li>
-                        <li>3 proposiciones (p, q, r): 2<sup>3</sup> = <strong>8 renglones</strong></li>
-                        <li>4 proposiciones: 2<sup>4</sup> = <strong>16 renglones</strong></li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Slide 9: Proposiciones Simples -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Proposiciones Simples</h2>
         </div>
-
-        <!-- Slide 17: Método para Construir Tablas - Paso 2 -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Construir Tablas de Verdad - Paso 2</h2>
-            </div>
-            <div class="slide-content">
-                <h3>Llenar los valores de V y F</h3>
-                <p><strong>Regla:</strong> Para cada proposición simple:</p>
-                <ul>
-                    <li>Primera columna: alternar cada 2<sup>n-1</sup> valores</li>
-                    <li>Segunda columna: alternar cada 2<sup>n-2</sup> valores</li>
-                    <li>Y así sucesivamente...</li>
-                </ul>
-                <div class="example-box">
-                    <p><strong>Para 2 proposiciones (p, q):</strong></p>
-                    <p>Columna p: V, V, F, F (alterna cada 2)</p>
-                    <p>Columna q: V, F, V, F (alterna cada 1)</p>
-                </div>
-            </div>
+        <div class="slide-content">
+          <p>
+            Una <strong>proposición simple</strong> (o atómica) es aquella que
+            <strong>no puede descomponerse</strong> en proposiciones más
+            sencillas.
+          </p>
+          <div class="example-box">
+            <h3>Ejemplos:</h3>
+            <ul>
+              <li>p: "Hoy es martes"</li>
+              <li>q: "Hace calor"</li>
+              <li>r: "El número 7 es primo"</li>
+              <li>s: "María estudia informática"</li>
+            </ul>
+          </div>
+          <p>
+            Cada una expresa <strong>una sola idea</strong> y no puede dividirse
+            en partes más simples.
+          </p>
         </div>
+      </div>
 
-        <!-- Slide 18: Conectiva Negación -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectiva: Negación <span class="logic-symbol">(¬)</span></h2>
-            </div>
-            <div class="slide-content">
-                <p>La <strong>negación</strong> invierte el valor de verdad de una proposición.</p>
-                <p><strong>Símbolo:</strong> ¬p (se lee "no p")</p>
-                <table>
-                    <tr>
-                        <th>p</th>
-                        <th>¬p</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                </table>
-                <div class="example-box">
-                    <p><strong>Ejemplo:</strong></p>
-                    <p>p: "Hace calor" → V</p>
-                    <p>¬p: "No hace calor" → F</p>
-                </div>
-            </div>
+      <!-- Slide 10: Proposiciones Compuestas -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Proposiciones Compuestas</h2>
         </div>
-
-        <!-- Slide 19: Conectiva Conjunción -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectiva: Conjunción <span class="logic-symbol">(∧)</span></h2>
-            </div>
-            <div class="slide-content">
-                <p>La <strong>conjunción</strong> es verdadera solo cuando <strong>ambas proposiciones son verdaderas</strong>.</p>
-                <p><strong>Símbolo:</strong> p ∧ q (se lee "p y q")</p>
-                <table>
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>p ∧ q</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                </table>
-                <div class="example-box">
-                    <p>p: "El deporte es saludable" | q: "El deporte es disciplina"</p>
-                    <p>p ∧ q: "El deporte es saludable <strong>y</strong> disciplina"</p>
-                </div>
-            </div>
+        <div class="slide-content">
+          <p>
+            Una <strong>proposición compuesta</strong> (o molecular) es aquella
+            formada por <strong>dos o más proposiciones simples</strong> unidas
+            por conectivos lógicos.
+          </p>
+          <div class="example-box">
+            <h3>Ejemplos:</h3>
+            <ul>
+              <li>"Hoy es martes <strong>y</strong> hace calor"</li>
+              <li>"El número 7 es primo <strong>o</strong> es par"</li>
+              <li>
+                "<strong>Si</strong> llueve, <strong>entonces</strong> me quedo
+                en casa"
+              </li>
+              <li>"<strong>No</strong> hace frío"</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 20: Conectiva Disyunción -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectiva: Disyunción Inclusiva <span class="logic-symbol">(∨)</span></h2>
-            </div>
-            <div class="slide-content">
-                <p>La <strong>disyunción</strong> es verdadera cuando <strong>al menos una proposición es verdadera</strong>.</p>
-                <p><strong>Símbolo:</strong> p ∨ q (se lee "p o q")</p>
-                <table>
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>p ∨ q</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                </table>
-                <div class="example-box">
-                    <p><strong>Ejemplo:</strong></p>
-                    <p>p: "Estudio matemáticas" | q: "Estudio programación"</p>
-                    <p>p ∨ q: "Estudio matemáticas <strong>o</strong> programación"</p>
-                </div>
-            </div>
+      <!-- Slide 11: Conectivos - Introducción -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Conectivos Lógicos</h2>
         </div>
-
-        <!-- Slide 21: Conectiva Condicional -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectiva: Condicional <span class="logic-symbol">(→)</span></h2>
-            </div>
-            <div class="slide-content">
-                <p>El <strong>condicional</strong> es falso solo cuando el <strong>antecedente es verdadero</strong> y el <strong>consecuente es falso</strong>.</p>
-                <p><strong>Símbolo:</strong> p → q (se lee "si p, entonces q")</p>
-                <table>
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>p → q</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                </table>
-                <div class="example-box">
-                    <p>p: "Llueve" | q: "El patio está mojado"</p>
-                    <p>p → q: "<strong>Si</strong> llueve, <strong>entonces</strong> el patio está mojado"</p>
-                </div>
-            </div>
+        <div class="slide-content">
+          <p>
+            Los <strong>conectivos lógicos</strong> son símbolos que permiten
+            <strong>unir proposiciones simples</strong> para formar
+            proposiciones compuestas.
+          </p>
+          <p>
+            Cada conectivo tiene un <strong>significado específico</strong> y
+            determina el valor de verdad de la proposición resultante.
+          </p>
+          <div class="example-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>p: "Estudio" | q: "Apruebo"</p>
+            <p>
+              p <span class="logic-symbol">∧</span> q: "Estudio
+              <strong>y</strong> apruebo"
+            </p>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 22: Conectiva Bicondicional -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Conectiva: Bicondicional <span class="logic-symbol">(↔)</span></h2>
-            </div>
-            <div class="slide-content">
-                <p>El <strong>bicondicional</strong> es verdadero cuando <strong>ambas proposiciones tienen el mismo valor de verdad</strong>.</p>
-                <p><strong>Símbolo:</strong> p ↔ q (se lee "p si y solo si q")</p>
-                <table>
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>p ↔ q</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                </table>
-                <div class="example-box">
-                    <p><strong>Ejemplo:</strong></p>
-                    <p>p: "Es fin de semana" | q: "No hay clases"</p>
-                    <p>p ↔ q: "Es fin de semana <strong>si y solo si</strong> no hay clases"</p>
-                </div>
-            </div>
+      <!-- Slide 12: Conectivos - Lista Completa -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Conectivos Lógicos Principales</h2>
         </div>
-
-        <!-- Slide 23: Ejemplo 1 de Tabla de Verdad -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Resolviendo Tablas de Verdad - Ejemplo 1</h2>
-            </div>
-            <div class="slide-content">
-                <p><strong>Proposición:</strong> (p ∧ q) → r</p>
-                <table style="max-width: 600px;">
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>r</th>
-                        <th>p ∧ q</th>
-                        <th>(p ∧ q) → r</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                </table>
-            </div>
+        <div class="slide-content">
+          <table>
+            <tr>
+              <th>Conectivo</th>
+              <th>Símbolo</th>
+              <th>Nombre</th>
+            </tr>
+            <tr>
+              <td>NO</td>
+              <td><span class="logic-symbol">¬</span></td>
+              <td>Negación</td>
+            </tr>
+            <tr>
+              <td>Y</td>
+              <td><span class="logic-symbol">∧</span></td>
+              <td>Conjunción</td>
+            </tr>
+            <tr>
+              <td>O</td>
+              <td><span class="logic-symbol">∨</span></td>
+              <td>Disyunción</td>
+            </tr>
+            <tr>
+              <td>SI... ENTONCES</td>
+              <td><span class="logic-symbol">→</span></td>
+              <td>Condicional</td>
+            </tr>
+            <tr>
+              <td>SI Y SOLO SI</td>
+              <td><span class="logic-symbol">↔</span></td>
+              <td>Bicondicional</td>
+            </tr>
+          </table>
         </div>
+      </div>
 
-        <!-- Slide 24: Ejemplo 2 de Tabla de Verdad -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Resolviendo Tablas de Verdad - Ejemplo 2</h2>
-            </div>
-            <div class="slide-content">
-                <p><strong>Proposición:</strong> [p ∧ (q → r)] ∨ p</p>
-                <p style="font-size: 0.95rem;"><strong>Pasos:</strong></p>
-                <ol style="font-size: 0.95rem;">
-                    <li>Evaluar (q → r)</li>
-                    <li>Evaluar p ∧ (q → r)</li>
-                    <li>Evaluar [p ∧ (q → r)] ∨ p</li>
-                </ol>
-                <table style="max-width: 700px; font-size: 0.9rem;">
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th>r</th>
-                        <th>q → r</th>
-                        <th>p ∧ (q → r)</th>
-                        <th>[p ∧ (q → r)] ∨ p</th>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                    <tr>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>F</td>
-                        <td>V</td>
-                        <td>F</td>
-                        <td>F</td>
-                    </tr>
-                </table>
-            </div>
+      <!-- Slide 13: Ejemplos de NO Proposiciones -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Oraciones que NO son Proposiciones</h2>
         </div>
-
-        <!-- Slide 25: Tautología, Contradicción y Contingencia -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Tautología, Contradicción y Contingencia</h2>
-            </div>
-            <div class="slide-content">
-                <h3>Definiciones:</h3>
-                <ul style="margin-bottom: 30px;">
-                    <li><strong>Tautología:</strong> Proposición compuesta que es <span class="highlight">siempre verdadera</span>, independientemente de los valores de verdad de sus componentes.
-                        <br><em>Ejemplo: p ∨ ¬p</em></li>
-                    <li><strong>Contradicción:</strong> Proposición compuesta que es <span class="highlight">siempre falsa</span>, independientemente de los valores de verdad de sus componentes.
-                        <br><em>Ejemplo: p ∧ ¬p</em></li>
-                    <li><strong>Contingencia:</strong> Proposición compuesta que puede ser <span class="highlight">verdadera o falsa</span> según los valores de sus componentes.
-                        <br><em>Ejemplo: p ∧ q</em></li>
-                </ul>
-            </div>
+        <div class="slide-content">
+          <ol>
+            <li>"¿Dónde vives?" - <strong>Pregunta</strong></li>
+            <li>"¡Qué día tan hermoso!" - <strong>Exclamación</strong></li>
+            <li>"Abre la ventana" - <strong>Orden o mandato</strong></li>
+            <li>"Ojalá llueva mañana" - <strong>Deseo</strong></li>
+            <li>
+              "x + 5 = 10" - <strong>Expresión con variable</strong> (no es V o
+              F hasta conocer x)
+            </li>
+            <li>"Esta oración es falsa" - <strong>Paradoja</strong></li>
+            <li>"Por favor, ayúdame" - <strong>Petición</strong></li>
+            <li>"El mayor número primo" - <strong>Frase sin verbo</strong></li>
+          </ol>
         </div>
+      </div>
 
-        <!-- Slide 26: Ejercicios Propuestos -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Ejercicios Propuestos</h2>
-            </div>
-            <div class="slide-content" style="font-size: 1rem;">
-                <p><strong>Ejercicio 1:</strong> Dadas las proposiciones: p = Marcos es comerciante, q = Marcos es un próspero industrial y r = Marcos es ingeniero. Simbolizar el enunciado: "Si no es el caso que Marcos sea un comerciante y próspero industrial, entonces es ingeniero o no es comerciante".</p>
-                <hr style="margin: 20px 0; border: 1px solid #e5e7eb;">
-                <p><strong>Ejercicio 2:</strong> Dadas las proposiciones q: "4 es un número impar", p y r cualesquiera tal que -[(r∨q) → (r∧p)] es verdadera; hallar el valor de verdad de: A = r→(~p∨~q); B = [r↔(p∧q)]→(q∧~p); C = (r∨~p) ∧ (q∨p)</p>
-            </div>
+      <!-- Slide 14: ¿Cuáles son Proposiciones? -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Análisis: ¿Cuáles son Proposiciones?</h2>
         </div>
-
-        <!-- Slide 27: Referencias Bibliográficas -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>Referencias Bibliográficas</h2>
-            </div>
-            <div class="slide-content">
-                <h3>Bibliografía Básica:</h3>
-                <ul style="font-size: 1rem;">
-                    <li>ALMEIDA RODRIGUEZ, M. Angel. <em>Metodología de la Programación a través del Pseudocódigo</em></li>
-                    <li>JOYANES AGUILAR, Luis. <em>Fundamentos de Programación, Algoritmos y Estructura de Datos</em></li>
-                    <li>PABLO SZNAJDLEDER. <em>Algoritmos a Fondo: Con implementaciones en C y Java</em></li>
-                </ul>
-                <h3 style="margin-top: 30px;">Bibliografía Complementaria:</h3>
-                <ul style="font-size: 1rem;">
-                    <li>ALCALDE, Eduardo y GARCÍA, Miguel. <em>Metodología de la Programación</em></li>
-                    <li>BRITIZ CHAMORRO, Victor Alfredo. <em>Libro de Ejercicios de Pseudocódigo</em></li>
-                    <li>FILHO, Edgar de Alencar. <em>Iniciación a la Lógica Matemática</em></li>
-                </ul>
-            </div>
+        <div class="slide-content">
+          <ol style="line-height: 2">
+            <li>
+              "El deporte es saludable" → <strong>SÍ</strong> (proposición)
+            </li>
+            <li>"¿Qué hora es?" → <strong>NO</strong> (pregunta)</li>
+            <li>"2 + 3 = 5" → <strong>SÍ</strong> (proposición verdadera)</li>
+            <li>"¡Qué hermoso día!" → <strong>NO</strong> (exclamación)</li>
+            <li>"El patio está mojado" → <strong>SÍ</strong> (proposición)</li>
+            <li>"Cierra la puerta" → <strong>NO</strong> (orden)</li>
+            <li>
+              "x es mayor que 10" → <strong>NO</strong> (tiene variable
+              indefinida)
+            </li>
+            <li>
+              "La lógica es importante" → <strong>SÍ</strong> (proposición)
+            </li>
+          </ol>
         </div>
+      </div>
 
-        <!-- Slide 28: Cierre -->
-        <div class="slide cover-slide">
-            <div>
-                <h1>¡Gracias por su atención!</h1>
-                <p class="subtitle" style="margin-top: 30px;">Lógica Matemática - Algorítmica Unidad I</p>
-                <div class="institution" style="margin-top: 50px;">
-                    <p><strong>Facultad Politécnica</strong></p>
-                    <p>Universidad Nacional del Este</p>
-                </div>
-                <div class="teachers" style="margin-top: 40px; font-size: 1rem;">
-                    <p>Ing. Richard Manuel Pereira Ovelar</p>
-                    <p>Lic. Aldo Ariel Gómez Ortega</p>
-                </div>
-                <p style="margin-top: 40px; color: var(--color-secondary); font-size: 1.5rem; font-weight: bold;">2025</p>
-            </div>
+      <!-- Slide 15: Tablas de Verdad - Introducción -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Tablas de Verdad</h2>
         </div>
+        <div class="slide-content">
+          <p>
+            Una <strong>tabla de verdad</strong> es una representación que
+            muestra <strong>todos los valores posibles</strong> de una
+            proposición compuesta según los valores de sus proposiciones
+            simples.
+          </p>
+          <p>
+            Las tablas de verdad fueron desarrolladas por el filósofo y
+            matemático <strong>Ludwig Wittgenstein</strong> y son fundamentales
+            para:
+          </p>
+          <ul>
+            <li>Analizar la validez de argumentos lógicos</li>
+            <li>Diseñar circuitos digitales</li>
+            <li>Programar estructuras de control</li>
+            <li>Verificar equivalencias lógicas</li>
+          </ul>
+        </div>
+      </div>
 
+      <!-- Slide 16: Método para Construir Tablas - Paso 1 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Construir Tablas de Verdad - Paso 1</h2>
+        </div>
+        <div class="slide-content">
+          <h3>Determinar columnas y renglones</h3>
+          <p>
+            <strong>Fórmula:</strong> Número de renglones =
+            <strong>2<sup>n</sup></strong>
+          </p>
+          <p>
+            Donde <strong>n</strong> es el número de proposiciones simples
+            diferentes.
+          </p>
+          <div class="example-box">
+            <p><strong>Ejemplos:</strong></p>
+            <ul>
+              <li>
+                1 proposición (p): 2<sup>1</sup> = <strong>2 renglones</strong>
+              </li>
+              <li>
+                2 proposiciones (p, q): 2<sup>2</sup> =
+                <strong>4 renglones</strong>
+              </li>
+              <li>
+                3 proposiciones (p, q, r): 2<sup>3</sup> =
+                <strong>8 renglones</strong>
+              </li>
+              <li>
+                4 proposiciones: 2<sup>4</sup> = <strong>16 renglones</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 17: Método para Construir Tablas - Paso 2 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Construir Tablas de Verdad - Paso 2</h2>
+        </div>
+        <div class="slide-content">
+          <h3>Llenar los valores de V y F</h3>
+          <p><strong>Regla:</strong> Para cada proposición simple:</p>
+          <ul>
+            <li>Primera columna: alternar cada 2<sup>n-1</sup> valores</li>
+            <li>Segunda columna: alternar cada 2<sup>n-2</sup> valores</li>
+            <li>Y así sucesivamente...</li>
+          </ul>
+          <div class="example-box">
+            <p><strong>Para 2 proposiciones (p, q):</strong></p>
+            <p>Columna p: V, V, F, F (alterna cada 2)</p>
+            <p>Columna q: V, F, V, F (alterna cada 1)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 18: Conectiva Negación -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Conectiva: Negación <span class="logic-symbol">(¬)</span></h2>
+        </div>
+        <div class="slide-content">
+          <p>
+            La <strong>negación</strong> invierte el valor de verdad de una
+            proposición.
+          </p>
+          <p><strong>Símbolo:</strong> ¬p (se lee "no p")</p>
+          <table>
+            <tr>
+              <th>p</th>
+              <th>¬p</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+          </table>
+          <div class="example-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>p: "Hace calor" → V</p>
+            <p>¬p: "No hace calor" → F</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 19: Conectiva Conjunción -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Conectiva: Conjunción <span class="logic-symbol">(∧)</span></h2>
+        </div>
+        <div class="slide-content">
+          <p>
+            La <strong>conjunción</strong> es verdadera solo cuando
+            <strong>ambas proposiciones son verdaderas</strong>.
+          </p>
+          <p><strong>Símbolo:</strong> p ∧ q (se lee "p y q")</p>
+          <table>
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>p ∧ q</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+          </table>
+          <div class="example-box">
+            <p>p: "El deporte es saludable" | q: "El deporte es disciplina"</p>
+            <p>
+              p ∧ q: "El deporte es saludable <strong>y</strong> disciplina"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 20: Conectiva Disyunción -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>
+            Conectiva: Disyunción Inclusiva
+            <span class="logic-symbol">(∨)</span>
+          </h2>
+        </div>
+        <div class="slide-content">
+          <p>
+            La <strong>disyunción</strong> es verdadera cuando
+            <strong>al menos una proposición es verdadera</strong>.
+          </p>
+          <p><strong>Símbolo:</strong> p ∨ q (se lee "p o q")</p>
+          <table>
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>p ∨ q</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+          </table>
+          <div class="example-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>p: "Estudio matemáticas" | q: "Estudio programación"</p>
+            <p>p ∨ q: "Estudio matemáticas <strong>o</strong> programación"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 21: Conectiva Condicional -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Conectiva: Condicional <span class="logic-symbol">(→)</span></h2>
+        </div>
+        <div class="slide-content">
+          <p>
+            El <strong>condicional</strong> es falso solo cuando el
+            <strong>antecedente es verdadero</strong> y el
+            <strong>consecuente es falso</strong>.
+          </p>
+          <p><strong>Símbolo:</strong> p → q (se lee "si p, entonces q")</p>
+          <table>
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>p → q</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+          </table>
+          <div class="example-box">
+            <p>p: "Llueve" | q: "El patio está mojado"</p>
+            <p>
+              p → q: "<strong>Si</strong> llueve, <strong>entonces</strong> el
+              patio está mojado"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 22: Conectiva Bicondicional -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>
+            Conectiva: Bicondicional <span class="logic-symbol">(↔)</span>
+          </h2>
+        </div>
+        <div class="slide-content">
+          <p>
+            El <strong>bicondicional</strong> es verdadero cuando
+            <strong>ambas proposiciones tienen el mismo valor de verdad</strong
+            >.
+          </p>
+          <p><strong>Símbolo:</strong> p ↔ q (se lee "p si y solo si q")</p>
+          <table>
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>p ↔ q</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+          </table>
+          <div class="example-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>p: "Es fin de semana" | q: "No hay clases"</p>
+            <p>
+              p ↔ q: "Es fin de semana <strong>si y solo si</strong> no hay
+              clases"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 23: Ejemplo 1 de Tabla de Verdad -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Resolviendo Tablas de Verdad - Ejemplo 1</h2>
+        </div>
+        <div class="slide-content">
+          <p><strong>Proposición:</strong> (p ∧ q) → r</p>
+          <table style="max-width: 600px">
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>r</th>
+              <th>p ∧ q</th>
+              <th>(p ∧ q) → r</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Slide 24: Ejemplo 2 de Tabla de Verdad -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Resolviendo Tablas de Verdad - Ejemplo 2</h2>
+        </div>
+        <div class="slide-content">
+          <p><strong>Proposición:</strong> [p ∧ (q → r)] ∨ p</p>
+          <p style="font-size: 0.95rem"><strong>Pasos:</strong></p>
+          <ol style="font-size: 0.95rem">
+            <li>Evaluar (q → r)</li>
+            <li>Evaluar p ∧ (q → r)</li>
+            <li>Evaluar [p ∧ (q → r)] ∨ p</li>
+          </ol>
+          <table style="max-width: 700px; font-size: 0.9rem">
+            <tr>
+              <th>p</th>
+              <th>q</th>
+              <th>r</th>
+              <th>q → r</th>
+              <th>p ∧ (q → r)</th>
+              <th>[p ∧ (q → r)] ∨ p</th>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>F</td>
+              <td>F</td>
+              <td>V</td>
+              <td>F</td>
+              <td>F</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Slide 25: Tautología, Contradicción y Contingencia -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Tautología, Contradicción y Contingencia</h2>
+        </div>
+        <div class="slide-content">
+          <h3>Definiciones:</h3>
+          <ul style="margin-bottom: 30px">
+            <li>
+              <strong>Tautología:</strong> Proposición compuesta que es
+              <span class="highlight">siempre verdadera</span>,
+              independientemente de los valores de verdad de sus componentes.
+              <br /><em>Ejemplo: p ∨ ¬p</em>
+            </li>
+            <li>
+              <strong>Contradicción:</strong> Proposición compuesta que es
+              <span class="highlight">siempre falsa</span>, independientemente
+              de los valores de verdad de sus componentes. <br /><em
+                >Ejemplo: p ∧ ¬p</em
+              >
+            </li>
+            <li>
+              <strong>Contingencia:</strong> Proposición compuesta que puede ser
+              <span class="highlight">verdadera o falsa</span> según los valores
+              de sus componentes. <br /><em>Ejemplo: p ∧ q</em>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Slide 26: Ejercicios Propuestos -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Ejercicios Propuestos</h2>
+        </div>
+        <div class="slide-content" style="font-size: 1rem">
+          <p>
+            <strong>Ejercicio 1:</strong> Dadas las proposiciones: p = Marcos es
+            comerciante, q = Marcos es un próspero industrial y r = Marcos es
+            ingeniero. Simbolizar el enunciado: "Si no es el caso que Marcos sea
+            un comerciante y próspero industrial, entonces es ingeniero o no es
+            comerciante".
+          </p>
+          <hr style="margin: 20px 0; border: 1px solid #e5e7eb" />
+          <p>
+            <strong>Ejercicio 2:</strong> Dadas las proposiciones q: "4 es un
+            número impar", p y r cualesquiera tal que -[(r∨q) → (r∧p)] es
+            verdadera; hallar el valor de verdad de: A = r→(~p∨~q); B =
+            [r↔(p∧q)]→(q∧~p); C = (r∨~p) ∧ (q∨p)
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 27: Referencias Bibliográficas -->
+      <div class="slide">
+        <div class="slide-header">
+          <h2>Referencias Bibliográficas</h2>
+        </div>
+        <div class="slide-content">
+          <h3>Bibliografía Básica:</h3>
+          <ul style="font-size: 1rem">
+            <li>
+              ALMEIDA RODRIGUEZ, M. Angel.
+              <em>Metodología de la Programación a través del Pseudocódigo</em>
+            </li>
+            <li>
+              JOYANES AGUILAR, Luis.
+              <em
+                >Fundamentos de Programación, Algoritmos y Estructura de
+                Datos</em
+              >
+            </li>
+            <li>
+              PABLO SZNAJDLEDER.
+              <em>Algoritmos a Fondo: Con implementaciones en C y Java</em>
+            </li>
+          </ul>
+          <h3 style="margin-top: 30px">Bibliografía Complementaria:</h3>
+          <ul style="font-size: 1rem">
+            <li>
+              ALCALDE, Eduardo y GARCÍA, Miguel.
+              <em>Metodología de la Programación</em>
+            </li>
+            <li>
+              BRITIZ CHAMORRO, Victor Alfredo.
+              <em>Libro de Ejercicios de Pseudocódigo</em>
+            </li>
+            <li>
+              FILHO, Edgar de Alencar.
+              <em>Iniciación a la Lógica Matemática</em>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Slide 28: Cierre -->
+      <div class="slide cover-slide">
+        <div>
+          <h1>¡Gracias por su atención!</h1>
+          <p class="subtitle" style="margin-top: 30px">
+            Lógica Matemática - Algorítmica Unidad I
+          </p>
+          <div class="institution" style="margin-top: 50px">
+            <p><strong>Facultad Politécnica</strong></p>
+            <p>Universidad Nacional del Este</p>
+          </div>
+          <div class="teachers" style="margin-top: 40px; font-size: 1rem">
+            <p>Ing. Richard Manuel Pereira Ovelar</p>
+            <p>Lic. Aldo Ariel Gómez Ortega</p>
+          </div>
+          <p
+            style="
+              margin-top: 40px;
+              color: var(--color-secondary);
+              font-size: 1.5rem;
+              font-weight: bold;
+            "
+          >
+            2025
+          </p>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('.nav');
-        
-        if (hamburger && nav) {
-            hamburger.addEventListener('click', function() {
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-                if (window.innerWidth <= 768) {
-                    nav.style.position = 'absolute';
-                    nav.style.top = '100%';
-                    nav.style.left = '0';
-                    nav.style.right = '0';
-                    nav.style.background = 'var(--color-primary)';
-                    nav.style.flexDirection = 'column';
-                    nav.style.padding = '20px';
-                    nav.style.boxShadow = 'var(--shadow-lg)';
-                }
-            });
-        }
+      // Mobile menu toggle
+      const hamburger = document.querySelector(".hamburger");
+      const nav = document.querySelector(".nav");
 
-        // Add active state to navigation on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav a[href="#${sectionId}"]`);
-
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    if (navLink) {
-                        document.querySelectorAll('.nav a').forEach(link => {
-                            link.style.borderBottom = 'none';
-                        });
-                        navLink.style.borderBottom = '2px solid white';
-                    }
-                }
-            });
+      if (hamburger && nav) {
+        hamburger.addEventListener("click", function () {
+          nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+          if (window.innerWidth <= 768) {
+            nav.style.position = "absolute";
+            nav.style.top = "100%";
+            nav.style.left = "0";
+            nav.style.right = "0";
+            nav.style.background = "var(--color-primary)";
+            nav.style.flexDirection = "column";
+            nav.style.padding = "20px";
+            nav.style.boxShadow = "var(--shadow-lg)";
+          }
         });
+      }
+
+      // Add active state to navigation on scroll
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const scrollY = window.pageYOffset;
+
+        sections.forEach((section) => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - 100;
+          const sectionId = section.getAttribute("id");
+          const navLink = document.querySelector(
+            `.nav a[href="#${sectionId}"]`,
+          );
+
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (navLink) {
+              document.querySelectorAll(".nav a").forEach((link) => {
+                link.style.borderBottom = "none";
+              });
+              navLink.style.borderBottom = "2px solid white";
+            }
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
